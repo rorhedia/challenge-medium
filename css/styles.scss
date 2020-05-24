@@ -1,3 +1,32 @@
+
+.cursor-hand {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn {
+  border-radius: 5px;
+  border: solid 0.5px;
+  font-size: 12px;
+  color: rgb(77, 77, 77);
+}
+
+.btn-hidden {
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.nav-header{
+    list-style: none; 
+    overflow: auto;
+    display: flex;
+    li{
+        margin-left: 15px;
+    }
+}
 .hero {
   position: relative;
   left:20px;

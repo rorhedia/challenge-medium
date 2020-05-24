@@ -1,3 +1,37 @@
+
+.cursor-hand:hover {
+  cursor: pointer;
+}
+
+.btn {
+  border-radius: 5px;
+  border: solid 0.5px;
+  font-size: 12px;
+  color: #4d4d4d;
+}
+
+.btn-hidden {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .btn-hidden {
+    display: block;
+  }
+}
+
+.nav-header {
+  list-style: none;
+  overflow: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nav-header li {
+  margin-left: 15px;
+}
+
 .hero {
   position: relative;
   left: 20px;
