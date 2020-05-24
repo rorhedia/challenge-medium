@@ -25,4 +25,103 @@ svg {
   color: black;
   font-size: .8rem;
 }
+
+.cursor-hand:hover {
+  cursor: pointer;
+}
+
+.btn {
+  border-radius: 5px;
+  border: solid 0.5px;
+  font-size: 12px;
+  color: #4d4d4d;
+}
+
+.btn-hidden {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .btn-hidden {
+    display: block;
+  }
+}
+
+.nav-header {
+  list-style: none;
+  overflow: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nav-header li {
+  margin-left: 15px;
+}
+
+.hero {
+  position: relative;
+  left: 20px;
+}
+
+.hero .hero-image {
+  display: block;
+  background-image: url(https://cdn-images-1.medium.com/fit/c/416/151/1*6lg-x9c5oBy5c2BvLTYm-w.jpeg);
+  height: 150px;
+  width: 100%;
+  background-position: 50% 50% !important;
+  text-indent: -9999px;
+}
+
+.hero .hero-right {
+  background-image: url(https://cdn-images-1.medium.com/fit/c/504/222/1*-o6fzNrq3WHE8Pjvo191kA.jpeg);
+}
+
+.hero .hero-text-right {
+  margin-left: -15px;
+}
+
+@media only screen and (min-width: 1360px) {
+  .hero .hero-image {
+    position: absolute;
+    left: -20%;
+    width: 120%;
+  }
+  .hero h5 {
+    margin-top: 175px;
+  }
+  .hero .hero-right {
+    right: -3%;
+    left: auto;
+    width: 103%;
+  }
+}
+
+.network-color {
+  background-color: #D7EFEE;
+  padding: 10px;
+}
+
+.network-color h5 {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.network-color img {
+  width: 40%;
+}
+
+.network-content-color {
+  background-color: #fafafa;
+  padding: 40px;
+  color: black;
+  font-size: 0.8rem;
+}
+
+.anchor {
+  font-size: 0.8rem;
+}
+
+.anchor a {
+  color: black;
+}
 /*# sourceMappingURL=styles.css.map */
