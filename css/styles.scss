@@ -1,3 +1,32 @@
+$color-muted: #6c757d;
+
+svg {
+    fill: $color-muted;
+}
+
+.author{
+    font-size: 11px;
+    color: $color-muted;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.section-a-center-card {
+    line-height: 1;
+    font-size: .8rem;
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
+
+    a {
+        color: black;
+        font-size: .8rem;
+    }
+}
 
 .cursor-hand {
   &:hover {
