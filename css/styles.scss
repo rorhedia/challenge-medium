@@ -41,12 +41,29 @@ svg {
   color: rgb(77, 77, 77);
 }
 
+.btn-upgrade {
+    border: 1px solid #888888;
+  
+    &:hover {
+      border: 1px solid black;
+    }
+  }
+
 .btn-hidden {
   display: none;
   @media (min-width: 768px) {
     display: block;
   }
 }
+
+.btn-learn {
+    background-color: $green;
+    color: #fff;
+    &:hover {
+      background-color: $green-hover;
+      color: #fff;
+    }
+  }
 
 .nav-header{
     list-style: none; 
@@ -90,6 +107,10 @@ svg {
 
     }
   }
+
+}
+.FotoPerfil{
+    border-radius: 50%;
 }
 
 .network-color{
