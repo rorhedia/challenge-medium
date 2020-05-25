@@ -120,6 +120,9 @@ svg {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
   }
   .parent-nav-sticky .nav-sticky ul li {
     margin: 0 7.5px;
