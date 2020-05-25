@@ -47,9 +47,10 @@ svg {
 
 .btn-upgrade {
     border: 1px solid #888888;
-  
+    background-color: #fff;
     &:hover {
       border: 1px solid black;
+      background-color: #fff;
     }
   }
 
@@ -148,7 +149,7 @@ svg {
 
 .popular-on-medium{
   position: sticky;
-
+  top: -120px;
   .nav-popular{
     a{
       color: $color-muted;
@@ -229,6 +230,7 @@ svg {
     font-size: 0.8rem;
     padding-top: 15px;
 }
+
 
 
 .anchor {

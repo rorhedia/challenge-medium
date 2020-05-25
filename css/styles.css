@@ -40,10 +40,12 @@ svg {
 
 .btn-upgrade {
   border: 1px solid #888888;
+  background-color: #fff;
 }
 
 .btn-upgrade:hover {
   border: 1px solid black;
+  background-color: #fff;
 }
 
 .btn-hidden {
@@ -164,6 +166,7 @@ svg {
 .popular-on-medium {
   position: -webkit-sticky;
   position: sticky;
+  top: -120px;
 }
 
 .popular-on-medium .nav-popular a {
