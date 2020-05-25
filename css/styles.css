@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 svg {
   fill: #6c757d;
 }
@@ -59,6 +64,71 @@ svg {
 .btn-learn:hover {
   background-color: #029e74;
   color: #fff;
+}
+
+.parent-nav-sticky {
+  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #fff;
+}
+
+.parent-nav-sticky .nav-sticky {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 90%;
+  overflow: auto;
+}
+
+.parent-nav-sticky .nav-sticky ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+}
+
+.parent-nav-sticky .nav-sticky ul li {
+  margin: 0 7.5px;
+  list-style: none;
+}
+
+.parent-nav-sticky .nav-sticky ul li a {
+  color: #6c757d;
+  text-align: justify;
+}
+
+@media (min-width: 768px) {
+  .parent-nav-sticky .nav-sticky {
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    width: 85%;
+    overflow: auto;
+  }
+  .parent-nav-sticky .nav-sticky ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .parent-nav-sticky .nav-sticky ul li {
+    margin: 0 7.5px;
+    list-style: none;
+  }
+  .parent-nav-sticky .nav-sticky ul li a {
+    color: #6c757d;
+    text-align: justify;
+  }
 }
 
 .nav-header {
