@@ -173,7 +173,6 @@ svg {
 
 .hero {
   position: relative;
-  left: 20px;
 }
 
 .hero .hero-image {
@@ -211,6 +210,9 @@ svg {
     right: -3%;
     left: auto;
     width: 103%;
+  }
+  .hero .hero {
+    left: 20px;
   }
 }
 
