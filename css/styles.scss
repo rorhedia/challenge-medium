@@ -1,5 +1,8 @@
 $color-muted: #6c757d;
 $color-green: #03a87c;
+$gray: rgba(0, 0, 0, 0.54);
+$gray-hover: #5d5e5e;
+$green-hover: #029e74;
 
 svg {
     fill: $color-muted;
@@ -54,7 +57,7 @@ svg {
 }
 
 .btn-learn {
-    background-color: $green;
+    background-color: $color-green;
     color: #fff;
     &:hover {
       background-color: $green-hover;
@@ -80,6 +83,7 @@ svg {
   top: 0;
   a{
     margin-left: 10px;
+    color: $color-muted;
   }
 }
 

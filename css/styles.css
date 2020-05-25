@@ -1,5 +1,3 @@
-
-
 svg {
   fill: #6c757d;
 }
@@ -53,6 +51,16 @@ svg {
   }
 }
 
+.btn-learn {
+  background-color: #03a87c;
+  color: #fff;
+}
+
+.btn-learn:hover {
+  background-color: #029e74;
+  color: #fff;
+}
+
 .nav-header {
   list-style: none;
   display: -webkit-box;
@@ -77,6 +85,7 @@ svg {
 
 .nav-header2 a {
   margin-left: 10px;
+  color: #6c757d;
 }
 
 .popular-on-medium {
@@ -91,6 +100,7 @@ svg {
 
 .hero {
   position: relative;
+  left: 20px;
 }
 
 .hero .hero-image {
@@ -100,6 +110,14 @@ svg {
   width: 100%;
   background-position: 50% 42% !important;
   text-indent: -9999px;
+}
+
+.hero .hero-right {
+  background-image: url(https://cdn-images-1.medium.com/fit/c/504/222/1*-o6fzNrq3WHE8Pjvo191kA.jpeg);
+}
+
+.hero .hero-text-right {
+  margin-left: -15px;
 }
 
 .hero .hero-image-right {
