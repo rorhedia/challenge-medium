@@ -175,11 +175,12 @@ svg {
 
 .hero .hero-image {
   display: block;
-  background-image: url(https://cdn-images-1.medium.com/fit/c/416/151/1*6lg-x9c5oBy5c2BvLTYm-w.jpeg);
+  background-image: url(https://images.unsplash.com/flagged/photo-1575865655210-29e6bff713fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
   height: 150px;
   width: 100%;
   background-position: 50% 42% !important;
   text-indent: -9999px;
+  margin-right: 10px;
 }
 
 .hero .hero-right {
@@ -197,7 +198,7 @@ svg {
 @media only screen and (min-width: 1360px) {
   .hero .hero-image {
     position: absolute;
-    left: -20%;
+    left: -30%;
     width: 120%;
   }
   .hero h5 {
@@ -229,9 +230,9 @@ svg {
 
 .network-content-color {
   background-color: #fafafa;
-  padding: 40px;
   color: black;
   font-size: 0.8rem;
+  padding-top: 15px;
 }
 
 .anchor {
@@ -255,5 +256,10 @@ svg {
   .see-editors {
     text-align: end;
   }
+}
+
+.history-image {
+  width: 100px;
+  height: 100px;
 }
 /*# sourceMappingURL=styles.css.map */
