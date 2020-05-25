@@ -29,22 +29,20 @@
 }
 .hero {
   position: relative;
-  left:20px;
+
   .hero-image {
     display: block;
     background-image: url(https://cdn-images-1.medium.com/fit/c/416/151/1*6lg-x9c5oBy5c2BvLTYm-w.jpeg);
     height: 150px;
     width: 100%;
-    background-position: 50% 50% !important;
+    background-position: 50% 42% !important;
     text-indent: -9999px;
+
   }
-  .hero-right{
+  .hero-image-right{
     background-image: url(https://cdn-images-1.medium.com/fit/c/504/222/1*-o6fzNrq3WHE8Pjvo191kA.jpeg)
   }
 
-  .hero-text-right{
-    margin-left: -15px;
-  }
   @media only screen and (min-width: 1360px) {
     .hero-image {
       position: absolute;
@@ -54,7 +52,7 @@
     h5 {
         margin-top: 175px;
       }
-    .hero-right{
+    .hero-image-right{
       right: -3%;
       left:auto;
       width: 103%;
