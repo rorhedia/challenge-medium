@@ -160,7 +160,7 @@ svg {
 
 .hero {
   position: relative;
-  left:20px;
+  ;
 
   .hero-image {
     display: block;
@@ -201,6 +201,9 @@ svg {
       left:auto;
       width: 103%;
     }
+  .hero{
+    left:20px
+  }
   }
 
 }
@@ -228,10 +231,7 @@ svg {
     padding-top: 15px;
 }
 
-@media only screen and (min-width: 1360px){
-  .network-content-color{
-  }
-}
+
 
 .anchor {
   font-size: 0.8rem;
@@ -260,3 +260,21 @@ svg {
   width: 100px;
   height: 100px;
 }
+
+.text-card-section{ 
+  font-size: .8rem;
+ h5{
+   font-size: 1rem;
+ } 
+
+}
+
+@media (min-width:1360px) {
+.text-card-section{
+  font-size: 1rem;
+h5{
+  font-size:1.25rem;
+}
+}
+}
+

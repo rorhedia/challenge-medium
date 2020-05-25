@@ -176,7 +176,6 @@ svg {
 
 .hero {
   position: relative;
-  left: 20px;
 }
 
 .hero .hero-image {
@@ -214,6 +213,9 @@ svg {
     right: -3%;
     left: auto;
     width: 103%;
+  }
+  .hero .hero {
+    left: 20px;
   }
 }
 
@@ -267,5 +269,22 @@ svg {
 .history-image {
   width: 100px;
   height: 100px;
+}
+
+.text-card-section {
+  font-size: .8rem;
+}
+
+.text-card-section h5 {
+  font-size: 1rem;
+}
+
+@media (min-width: 1360px) {
+  .text-card-section {
+    font-size: 1rem;
+  }
+  .text-card-section h5 {
+    font-size: 1.25rem;
+  }
 }
 /*# sourceMappingURL=styles.css.map */
