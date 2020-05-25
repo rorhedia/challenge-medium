@@ -7,10 +7,6 @@ svg {
   color: #6c757d;
 }
 
-.cursor-pointer {
-  cursor: pointer;
-}
-
 .section-a-center-card {
   line-height: 1;
   font-size: .8rem;
@@ -49,13 +45,37 @@ svg {
 
 .nav-header {
   list-style: none;
-  overflow: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
 .nav-header li {
+  margin-left: 15px;
+}
+
+.nav-header li a {
+  color: #6c757d;
+}
+
+.nav-header2 {
+  text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.nav-header2 a {
+  margin-left: 10px;
+}
+
+.popular-on-medium {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.popular-on-medium .nav-popular a {
+  color: #6c757d;
   margin-left: 15px;
 }
 
@@ -123,5 +143,20 @@ svg {
 
 .anchor a {
   color: black;
+}
+
+.see-editors {
+  text-align: justify;
+}
+
+.see-editors a {
+  color: #03a87c;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .see-editors {
+    text-align: end;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

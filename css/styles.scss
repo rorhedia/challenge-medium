@@ -1,4 +1,5 @@
 $color-muted: #6c757d;
+$color-green: #03a87c;
 
 svg {
     fill: $color-muted;
@@ -7,10 +8,6 @@ svg {
 .author{
     font-size: 11px;
     color: $color-muted;
-}
-
-.cursor-pointer{
-    cursor: pointer;
 }
 
 .section-a-center-card {
@@ -50,15 +47,42 @@ svg {
 
 .nav-header{
     list-style: none; 
-    overflow: auto;
+    // overflow: auto;
     display: flex;
     li{
         margin-left: 15px;
+        a{
+          color: $color-muted;
+        }
     }
 }
+
+.nav-header2{
+  text-align: center;
+  position: sticky;
+  top: 0;
+  a{
+    margin-left: 10px;
+  }
+}
+
+.popular-on-medium{
+  position: sticky;
+
+  .nav-popular{
+    a{
+      color: $color-muted;
+      margin-left: 15px;
+    }
+  }
+  // top: 20px;
+  // border: $color-green solid 1px;
+}
+
 .hero {
   position: relative;
   left:20px;
+
   .hero-image {
     display: block;
     background-image: url(https://cdn-images-1.medium.com/fit/c/416/151/1*6lg-x9c5oBy5c2BvLTYm-w.jpeg);
@@ -67,22 +91,26 @@ svg {
     background-position: 50% 50% !important;
     text-indent: -9999px;
   }
+
   .hero-right{
-    background-image: url(https://cdn-images-1.medium.com/fit/c/504/222/1*-o6fzNrq3WHE8Pjvo191kA.jpeg)
+    background-image: url(https://cdn-images-1.medium.com/fit/c/504/222/1*-o6fzNrq3WHE8Pjvo191kA.jpeg);
   }
 
   .hero-text-right{
     margin-left: -15px;
   }
+
   @media only screen and (min-width: 1360px) {
     .hero-image {
       position: absolute;
       left: -20%;
       width: 120%;
     }
+
     h5 {
         margin-top: 175px;
-      }
+    }
+
     .hero-right{
       right: -3%;
       left:auto;
@@ -95,13 +123,13 @@ svg {
 .network-color{
     background-color:#D7EFEE;
     padding: 10px;
+
     h5{
       font-family: 'Noto Sans', sans-serif;
     } 
+
     img{
       width: 40%;
-    
-    
     }
   }
 
@@ -111,9 +139,26 @@ svg {
     color: black;
     font-size: 0.8rem;
 }
+
 .anchor {
   font-size: 0.8rem;
+
   a {
     color: black;
+  }
+}
+
+
+.see-editors{
+
+  text-align: justify;
+
+  a{
+    color: $color-green;
+    text-decoration: none;
+  }
+  
+  @media (min-width: 768px) {
+    text-align: end;
   }
 }
