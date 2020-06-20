@@ -1,128 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="/css/styles.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/styles.css" />
 </head>
+
 <body>
     <div class="container-fluid">
-    <div class="row my-5">
-        <!-- col2 -->
-        <div class="col-12 col-md-7">
-            <h1 class="text-dark mt-4 mt-md-4">Unlimited access for the insatiably curious</h1>
-            <form id="upgrade-medium" class=" p-4 mt-1 mt-md-5 bg-white">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                <label for="inputEmail4">Name</label>
-                    <input
-                    type="name"
-                    class="form-control"
-                    id="name"
-                    name="name"
-                    placeholder="Name"
-                    />
-                </div>
-                <div class="form-group col-md-6">
-                <label for="inputPassword4">User photo (URL)</label>
-                    <input
-                    type="image"
-                    class="form-control"
-                    name="user-photo"
-                    id="userPhoto"
-                    placeholder="User Photo"
-                    />
-                </div>
+        <div class="row my-5">
+            <!-- col2 -->
+            <div class="col-12 col-md-7">
+                <h1 class="text-dark mt-4 mt-md-4">Unlimited access for the insatiably curious</h1>
+                <form id="upgrade-medium" class=" p-4 mt-1 mt-md-5 bg-white">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Name</label>
+                            <input type="name" class="form-control" id="name" name="name" placeholder="Name" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">User photo (URL)</label>
+                            <input type="image" class="form-control" name="user-photo" id="userPhoto"
+                                placeholder="User Photo" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Title</label>
+                            <input type="title" class="form-control" id="title" name="title"
+                                placeholder="Article Title" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Article photo (URL)</label>
+                            <input type="image" class="form-control" name="article-photo" id="articlePhoto"
+                                placeholder="Article Photo" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="biography">Paragraph</label>
+                        <textarea ype="text" class="form-control" id="paragraph" name="paragraph"
+                            placeholder="Type about your article"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Company / Page</label>
+                            <input type="name" class="form-control" id="company" name="company" placeholder="Company" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Company / Page (URL)</label>
+                            <input type="url" class="form-control" name="companyUrl" id="companyUrl"
+                                placeholder="URL" />
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-info px-5" data-toggle="modal"
+                        data-target="#saveModal">
+                        Save your Article
+                    </button>
+                </form>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                <label for="inputEmail4">Title</label>
-                    <input
-                    type="title"
-                    class="form-control"
-                    id="title"
-                    name="title"
-                    placeholder="Article Title"
-                    />
-                </div>
-                <div class="form-group col-md-6">
-                <label for="inputPassword4">Article photo (URL)</label>
-                    <input
-                    type="image"
-                    class="form-control"
-                    name="article-photo"
-                    id="articlePhoto"
-                    placeholder="Article Photo"
-                    />
-                </div>
+            <!-- col-1 -->
+            <div class="col-12 col-md-5 align-self-end mb-5">
+                <img class="w-100" src="/images/1_90cu6c0u4ZL8H8ic1woZDw@2x.png" alt="" width="" />
             </div>
-            <div class="form-group">
-            <label for="biography">Paragraph</label>
-            <textarea
-                ype="text"
-                class="form-control"
-                id="paragraph"
-                name="paragraph"
-                placeholder="Type about your article"
-            ></textarea>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                <label for="inputEmail4">Company / Page</label>
-                    <input
-                    type="name"
-                    class="form-control"
-                    id="company"
-                    name="company"
-                    placeholder="Company"
-                    />
-                </div>
-                <div class="form-group col-md-6">
-                <label for="inputPassword4">Company / Page (URL)</label>
-                    <input
-                    type="url"
-                    class="form-control"
-                    name="companyUrl"
-                    id="companyUrl"
-                    placeholder="URL"
-                    />
-                </div>
-            </div>
-            <button
-                type="button"
-                class="btn btn-outline-info px-5"
-                data-toggle="modal"
-                data-target="#saveModal"
-                >
-            Save your Article
-            </button>
-        </form>
         </div>
-        <!-- col-1 -->
-    <div class="col-12 col-md-5 align-self-end mb-5">
-        <img class="w-100"src="/images/1_90cu6c0u4ZL8H8ic1woZDw@2x.png" alt="" width="" />
     </div>
-    </div>
-</div>
     <!-- ----------- En lazando archivos necesarios para BOOTSTRAP ---------------------- -->
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-    crossorigin="anonymous"
-></script>
-<script
-    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"
-></script>
-<!-- Enlazando bootstrap en script para que funcione-->
-<script
-    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-    crossorigin="anonymous"
-></script>
-<script src="/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <!-- Enlazando bootstrap en script para que funcione-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
 </body>
+
 </html>

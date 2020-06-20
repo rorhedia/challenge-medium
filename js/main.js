@@ -11,16 +11,23 @@ $('[data-toggle="popover"]').popover({
 /* Obteniendo los datos del formulario */
 const getUpgradeForm = () => {
     let date = new Date();
+
     console.log(date);
-    let upgrade = $("#upgrade-medium");
-    let upgradeArr = upgrade.serializeArray().forEach((dataUser) => {
-        upgradeObject[dataUser.name] = dataUser.value;
-        upgradeObject["newDate"] = date;
-    });
-    saveUpgrade(upgradeObject);
-    $("#saveModal").modal("hide");
+    // let upgrade = $("#upgrade-medium");
+    // let upgradeArr = upgrade.serializeArray().forEach((dataUser) => {
+    //     upgradeObject[dataUser.name] = dataUser.value;
+    //     upgradeObject["newDate"] = date;
+    // });
+    // saveUpgrade(upgradeObject);
+    // $("#saveModal").modal("hide");
 };
 
   /* Eventos */
 
-$("#save-article").click(getUpgradeForm);
+$("#save-article").click(function(){
+    window.location = '../formulario.html';
+});
+
+$("#toIndex").click(function(){
+    window.location = '../index.html';
+});
