@@ -9,7 +9,7 @@ svg {
 
 .section-a-center-card {
   line-height: 1;
-  font-size: 0.8rem;
+  font-size: .8rem;
 }
 
 .section-a-center-card img {
@@ -19,7 +19,7 @@ svg {
 
 .section-a-center-card a {
   color: black;
-  font-size: 0.8rem;
+  font-size: .8rem;
 }
 
 .cursor-hand:hover {
@@ -285,7 +285,7 @@ svg {
 }
 
 .text-card-section {
-  font-size: 0.8rem;
+  font-size: .8rem;
 }
 
 .text-card-section h5 {
@@ -299,5 +299,9 @@ svg {
   .text-card-section h5 {
     font-size: 1.25rem;
   }
+}
+
+#upgrade-medium {
+  opacity: 80%;
 }
 /*# sourceMappingURL=styles.css.map */
