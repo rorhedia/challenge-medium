@@ -63,6 +63,24 @@ svg {
   color: #fff;
 }
 
+.popover-body {
+  padding: 0;
+}
+
+.popover-body ul {
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+}
+
+.popover-body ul li {
+  margin: 2px 0;
+}
+
+.popover-body ul li a {
+  text-decoration: none;
+}
+
 .parent-nav-sticky {
   width: 100%;
   position: -webkit-sticky;
@@ -219,12 +237,12 @@ svg {
 }
 
 .network-color {
-  background-color: #D7EFEE;
+  background-color: #d7efee;
   padding: 10px;
 }
 
 .network-color h5 {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .network-color img {
