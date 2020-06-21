@@ -83,6 +83,16 @@ svg {
   }
 }
 
+.card-post-hide {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.95;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .parent-nav-sticky {
   width: 100%;
   position: sticky;
@@ -110,6 +120,7 @@ svg {
         a {
           color: $color-muted;
           text-align: justify;
+          text-decoration: none;
         }
       }
     }
@@ -291,7 +302,6 @@ svg {
   }
 }
 
-#upgrade-medium{
+#upgrade-medium {
   opacity: 80%;
 }
-

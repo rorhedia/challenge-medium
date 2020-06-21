@@ -68,39 +68,46 @@
         </div>
         <div class="ml-2 cursor-hand">&RightAngleBracket;</div>
     </div>
-    <div class="d-none" id="popover-list">
+    <div id='popover-component' class="d-none">
         <div class="popover-body">
             <ul>
-                <li><a class="text-muted" href="#">Dismiss this story</a></li>
-                <li><a class="text-muted" href="#">Mute this author</a></li>
-                <li><a class="text-muted" href="#">Mute this publication</a></li>
+                <li><a href="#" class="action-click text-muted" data-action="1">Dismiss this story</a></li>
+                <li><a href="#" class="action-click text-muted" data-action="2">Mute this author</a></li>
+                <li><a href="#" class="action-click text-muted" data-action="3">Mute this publication</a></li>
             </ul>
         </div>
     </div>
     <section class="container">
         <div class="row">
             <!--TARJETA INZQUIERDA-->
-            <div class="col-12 col-md-4 hero">
-                <a href="#" class="hero-image">articulo</a>
-                <h5>This Is Why Your Brain Thinks Dating A Secure Person Is Boring</h5>
-                <p class="text-muted">Don´t jump ship jet- they could be your dream partner. </p>
-                <p class="anchor"><a href="#">Katherine Meraki</a> in <a href="#">THE ASCEND</a></p>
-                <p class="text-muted d-flex justify-content-between">
-                    <span>May 22 &CenterDot; 5 min read &starf;</span>
-                    <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-placement="bottom"
-                        data-popover-content="#popover-list">
-                        <span>
-                            <svg width="25" height="25">
-                                <path
-                                    d="M5 12.5c0 .552.195 1.023.586 1.414.39.39.862.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414A1.927 1.927 0 0 0 7 10.5c-.552 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.617 0c0 .552.196 1.023.586 1.414.391.39.863.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414a1.927 1.927 0 0 0-1.414-.586c-.551 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.6 0c0 .552.195 1.023.586 1.414.39.39.868.586 1.432.586.551 0 1.023-.195 1.413-.586.391-.39.587-.862.587-1.414 0-.552-.196-1.023-.587-1.414a1.927 1.927 0 0 0-1.413-.586c-.565 0-1.042.195-1.432.586-.39.39-.586.862-.587 1.414z"
-                                    fill-rule="evenodd"></path>
-                            </svg>
-                        </span>
-                    </a>
-                </p>
+            <div class="col-12 col-md-6 col-lg-4 hero" data-post-id="123">
+                <div class="card-post-hide w-100 h-100 d-none">
+                    <h5>Publication muted</h5>
+                </div>
+                <div class="card-post">
+                    <a href="#" class="hero-image">articulo</a>
+                    <h5>This Is Why Your Brain Thinks Dating A Secure Person Is Boring</h5>
+                    <p class="text-muted">Don´t jump ship jet- they could be your dream partner. </p>
+                    <p class="anchor"><a href="#">Katherine Meraki</a> in <a href="#">THE ASCEND</a></p>
+                    <p class="text-muted d-flex justify-content-between">
+                        <span>May 22 &CenterDot; 5 min read &starf;</span>
+                        <!-- data-trigger="focus" -->
+                        <a class="popover-show" data-action-value="123" tabindex="0" role="button" data-toggle="popover"
+                            data-placement="bottom"
+                            data-popover-content='#popover-component'>
+                            <span>
+                                <svg width="25" height="25">
+                                    <path
+                                        d="M5 12.5c0 .552.195 1.023.586 1.414.39.39.862.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414A1.927 1.927 0 0 0 7 10.5c-.552 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.617 0c0 .552.196 1.023.586 1.414.391.39.863.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414a1.927 1.927 0 0 0-1.414-.586c-.551 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.6 0c0 .552.195 1.023.586 1.414.39.39.868.586 1.432.586.551 0 1.023-.195 1.413-.586.391-.39.587-.862.587-1.414 0-.552-.196-1.023-.587-1.414a1.927 1.927 0 0 0-1.413-.586c-.565 0-1.042.195-1.432.586-.39.39-.586.862-.587 1.414z"
+                                        fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </a>
+                    </p>
+                </div>
             </div>
             <!--TARJETA CENTRO-->
-            <div class="col-12 col-md-4 section-a-center-card">
+            <div class="col-12 col-md-6 col-lg-4 section-a-center-card">
                 <div class="row mb-2">
                     <div class="col-4 w-100 order-1 order-md-0">
                         <img src="https://cdn-images-1.medium.com/focal/200/200/54/58/1*H6CTkBe85ieSmZV_u3ZS4A.jpeg"
@@ -204,7 +211,7 @@
                 </div>
             </div>
             <!--TARJETA DERECHA-->
-            <div class="col-12 col-md-4 hero hero-right">
+            <div class="col-12 col-md-6 col-lg-4 d-md-none d-lg-block hero hero-right">
                 <a href="#" class="hero-image hero-image-right">articulo</a>
                 <div>
                     <h5>A 1-Minute Exercise To Finde Inner Peace</h5>
@@ -225,9 +232,6 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-12 col-md-10 see-editors">
-
-                <a href="#" data-toggle="popover" title="Popover Header"
-                    data-content="Some content inside the popover">Toggle popover</a>
                 <a href="#">SEE EDITOR´S PICKS</a>
                 <hr>
             </div>
@@ -237,9 +241,11 @@
     <section class="container">
         <div class="row">
             <div class="col-12 col-md-8 pr-md-5">
-                <div class="card border-0 bg-light">
+                <div id="card-learn" class="card border-0 bg-light">
                     <div class="card-body">
-                        <div class="text-muted text-right cursor-hand">x</div>
+                        <div class="text-right">
+                            <a href="#" class="text-muted card-body-closed">X</a>
+                        </div>
                         <h5 class="card-title">A new way to control your experience</h5>
                         <p class="card-text">
                             Hide content from authors or publications on your Medium homepage and in emails by clicking

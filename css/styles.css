@@ -9,7 +9,7 @@ svg {
 
 .section-a-center-card {
   line-height: 1;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .section-a-center-card img {
@@ -19,7 +19,7 @@ svg {
 
 .section-a-center-card a {
   color: black;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .cursor-hand:hover {
@@ -81,6 +81,22 @@ svg {
   text-decoration: none;
 }
 
+.card-post-hide {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.95;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .parent-nav-sticky {
   width: 100%;
   position: -webkit-sticky;
@@ -121,6 +137,7 @@ svg {
 .parent-nav-sticky .nav-sticky ul li a {
   color: #6c757d;
   text-align: justify;
+  text-decoration: none;
 }
 
 @media (min-width: 768px) {
@@ -285,7 +302,7 @@ svg {
 }
 
 .text-card-section {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .text-card-section h5 {
