@@ -11,11 +11,33 @@
 </head>
 
 <body>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-6">
+                <img class="d-none d-md-block cursor-hand" src="images/Logo.png" width="120" alt="">
+                <img class="d-sm-block d-md-none cursor-hand" src="images/Logo_Movil.jpg" alt="LogoM" width="33px">
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <div class="d-none d-sm-block">
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item active">
+                            <a class="nav-link text-dark" href="#">Our Story</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link text-dark font-weight-bold" href="#">About membership</a>
+                        </li>
+                    </ul>
+                </div>
+                <img class="cursor-hand FotoPerfil" src="images/Ninomedium.jpeg" width="33px" height="33px"
+                    alt="FotoPerfil">
+            </div>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="row my-5">
-            <!-- col2 -->
+            <!-- col1 -->
             <div class="col-12 col-md-7">
-                <h1 class="text-dark mt-4 mt-md-4">Unlimited access for the insatiably curious</h1>
+                <h1 id="font-title" class="text-dark mt-4 mt-md-4">Unlimited access for the insatiably curious</h1>
                 <form id="upgrade-medium" class=" p-4 mt-1 mt-md-5 bg-white">
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -24,7 +46,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">User photo (URL)</label>
-                            <input type="image" class="form-control" name="user-photo" id="userPhoto"
+                            <input type="url" class="form-control" name="user-photo" id="userPhoto"
                                 placeholder="User Photo" />
                         </div>
                     </div>
@@ -36,7 +58,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">Article photo (URL)</label>
-                            <input type="image" class="form-control" name="article-photo" id="articlePhoto"
+                            <input type="url" class="form-control" name="article-photo" id="articlePhoto"
                                 placeholder="Article Photo" />
                         </div>
                     </div>
@@ -56,15 +78,21 @@
                                 placeholder="URL" />
                         </div>
                     </div>
-                    <button type="button" class="btn btn-outline-info px-5" data-toggle="modal"
+                    <div class="form-group">
+                        <button type="button" class="btn btn-outline-info px-5" data-toggle="modal"
                         data-target="#saveModal">
                         Save your Article
                     </button>
+                    <button type="button" id="toIndex" class=" btn btn-outline-warning px-5" data-toggle="modal"
+                        data-target="#saveModal">
+                        Return
+                    </button>
+                    </div>
                 </form>
             </div>
-            <!-- col-1 -->
-            <div class="col-12 col-md-5 align-self-end mb-5">
-                <img class="w-100" src="/images/1_90cu6c0u4ZL8H8ic1woZDw@2x.png" alt="" width="" />
+            <!-- col2 -->
+            <div class="col-12 col-md-5 align-self-end mb-3 d-none d-md-block">
+                <img src="/images/1_90cu6c0u4ZL8H8ic1woZDw@2x.png" alt="" width="400px"/>
             </div>
         </div>
     </div>
