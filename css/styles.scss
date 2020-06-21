@@ -306,14 +306,14 @@ svg {
   opacity: 85%;
 }
 
-body{
+#body-formulario{
   background-image: url("../images/1_90cu6c0u4ZL8H8ic1woZDw@2x.png");
   background-repeat: no-repeat;
   background-size: 600px;
   background-position: bottom;
 }
 @media (min-width: 728px) {
-  body{
+  #body-formulario{
     background-image: none;
   }
 }
