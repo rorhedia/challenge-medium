@@ -30,4 +30,4 @@ $("#save-article").click(function(){
 
 $("#toIndex").click(function(){
     window.location = '../index.html';
-});
+}); //boton regresar

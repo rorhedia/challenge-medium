@@ -9,7 +9,7 @@ svg {
 
 .section-a-center-card {
   line-height: 1;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .section-a-center-card img {
@@ -19,7 +19,7 @@ svg {
 
 .section-a-center-card a {
   color: black;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .cursor-hand:hover {
@@ -285,7 +285,7 @@ svg {
 }
 
 .text-card-section {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .text-card-section h5 {
@@ -302,6 +302,26 @@ svg {
 }
 
 #upgrade-medium {
-  opacity: 80%;
+  opacity: 85%;
+}
+
+body {
+  background-image: url("../images/1_90cu6c0u4ZL8H8ic1woZDw@2x.png");
+  background-repeat: no-repeat;
+  background-size: 600px;
+  background-position: bottom;
+}
+
+@media (min-width: 728px) {
+  body {
+    background-image: none;
+  }
+}
+
+#font-title {
+  font-family: 'Crimson Text', serif;
+  font-size: 45px;
+  font-weight: bold;
+  margin-left: 5px;
 }
 /*# sourceMappingURL=styles.css.map */
