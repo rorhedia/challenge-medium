@@ -41,13 +41,13 @@
             </div>
         </div>
     </header>
-    <div class="container parent-nav-sticky bg-white">
+    <div class="container-fluid parent-nav-sticky bg-white">
         <div class="row">
-            <div class="col-12">
-                <div class="my-3 parent-nav-sticky">
-                    <div class="mr-2 cursor-hand nav-control left" onclick="scrollToLeft()">&LeftAngleBracket;</div>
-                    <div class="nav-sticky">
-                        <div class="horizontal-contenedor px-5 ">
+            <div class="col-10 offset-1">
+                <div class="my-3 ">
+                    <div class="horizontal-contenedor px-5 ">
+                        <div class="row">
+                            <div class="mr-2 cursor-hand nav-control left" onclick="scrollToLeft()">&LeftAngleBracket;</div>
                             <ul class="list-scroll p-0 ">
                                 <li><a href="# ">HOME</a></li>
                                 <li><a href="#">POPULAR</a></li>
@@ -64,22 +64,24 @@
                                 <li><a href="#">HEATED</a></li>
                                 <li><a href="#">MORE</a></li>
                             </ul>
+                            <div class="ml-2 cursor-hand nav-control right" onclick="scrollRight()">&RightAngleBracket;</div>
                         </div>
                     </div>
-                    <div class="ml-2 cursor-hand nav-control right" onclick="scrollRight()">&RightAngleBracket;</div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id='popover-component' class="d-none">
-            <div class="popover-body">
-                <ul>
-                    <li><a href="#" class="action-click text-muted" data-action="1">Dismiss this story</a></li>
-                    <li><a href="#" class="action-click text-muted" data-action="2">Mute this author</a></li>
-                    <li><a href="#" class="action-click text-muted" data-action="3">Mute this publication</a></li>
-                </ul>
-            </div>
+
+    <div id='popover-component' class="d-none">
+        <div class="popover-body">
+            <ul>
+                <li><a href="#" class="action-click text-muted" data-action="1">Dismiss this story</a></li>
+                <li><a href="#" class="action-click text-muted" data-action="2">Mute this author</a></li>
+                <li><a href="#" class="action-click text-muted" data-action="3">Mute this publication</a></li>
+            </ul>
         </div>
+    </div>
     </div>
     <div id="popover-componentUser" class="d-none">
         <div class="card popover-body" style="width: 18rem;">
@@ -98,7 +100,7 @@
         <div class="row justify-content-between">
 
             <!--TARJETA INZQUIERDA-->
-            <div class="col12 col-md-6 col-lg-4 post-card" data-post-id="rs1">
+            <div class="col-12 col-md-6 col-lg-4 post-card" data-post-id="rs1">
             </div>
 
             <!--TARJETA CENTRO-->
