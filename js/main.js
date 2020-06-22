@@ -10,7 +10,8 @@ const callPopover = () => {
     });
 }
 
-$('.popover-show').on('click', function (e) {
+
+$('.popover-show').on('click', function(e) {
     e.preventDefault();
     actionValue = $(this).data('action-value');
     let cardPostContainer = $(`[data-post-id=${actionValue}]`).children();
@@ -18,13 +19,13 @@ $('.popover-show').on('click', function (e) {
     $('.popover-show').popover('hide')
 })
 
-$('.action-click').on('click', function (e) {
+$('.action-click').on('click', function(e) {
     e.preventDefault();
     console.log('asdfghjk');
     alert();
 })
 
-$('.card-body-closed').click(function () {
+$('.card-body-closed').click(function() {
     $(this).closest('#card-learn').remove();
 })
 
@@ -37,7 +38,7 @@ const setObjPost = () => {
         userObj = {},
         data = {};
 
-    $.each(form, function (idx, value) {
+    $.each(form, function(idx, value) {
         userObj[value.name] = value.value;
     })
 
@@ -191,7 +192,7 @@ const msgDelete = () => {
  */
 const ajax = (data, callback) => {
     let { method, request } = data,
-        urlEndpoint = '';
+    urlEndpoint = '';
 
     if (method == 'POST' || method == 'GET') {
         urlEndpoint = '/.json';
@@ -203,7 +204,7 @@ const ajax = (data, callback) => {
         url: `https://challenge-medium.firebaseio.com/posts/data/${urlEndpoint}`,
         method: method,
         data: JSON.stringify(request)
-    }).done(function (response, status) {
+    }).done(function(response, status) {
         console.log(status);
         if (status == 'success' && response !== null) {
             callback(response);
@@ -218,10 +219,10 @@ callPopover();
 
 $('#save-post').on('click', setObjPost)
 
-$("#save-article").click(function () {
+$("#save-article").click(function() {
     window.location = '../formulario.html';
 });
 
-$("#toIndex").click(function () {
+$("#toIndex").click(function() {
     window.location = 'index.html';
 }); //boton regresar
