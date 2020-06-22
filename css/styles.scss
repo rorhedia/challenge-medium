@@ -152,6 +152,35 @@ svg {
   }
 }
 
+
+@media (min-width: 768px) {
+    .nav-sticky {
+        align-items: flex-end;
+        width: 85%;
+        overflow: auto;
+        ul {
+            display: flex;
+            justify-content: space-evenly;
+            li {
+                margin: 0 7.5px;
+                list-style: none;
+                a {
+                    color: $color-muted;
+                    text-align: justify;
+                }
+            }
+        }
+    }
+}
+
+.parent-nav-sticky {
+    width: 100%;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+}
+
+
 .nav-header {
   list-style: none;
   // overflow: auto;
