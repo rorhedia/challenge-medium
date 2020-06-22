@@ -328,3 +328,21 @@ $("#save-article").click(function () {
 $("#toIndex").click(function () {
     window.location = 'index.html';
 }); //boton regresar
+
+//Scroll infinito
+/*const addItems = 
+
+let scrollCounter = 1;
+$("#general-cards").on('scroll',() => {
+    console.log($('#general-cards').scrollTop());
+    let scrollPosition = $('#general-cards').scrollTop();
+    scrollPosition > 1000 * scrollCounter ? (addItems($('.card-learn')),
+    scrollCounter ++) : null;
+})
+addItems($('.card-learn'))*/
+
+window.addEventListener("scroll",(event => {
+    if ($(window).scrollTop() > $(document).height() - $(window).height() - 200) {
+        printPopularPost() 
+     }
+} ))
