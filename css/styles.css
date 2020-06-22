@@ -192,51 +192,6 @@
   margin-left: 15px;
 }
 
-.hero {
-  position: relative;
-}
-
-.hero .hero-image {
-  display: block;
-  background-image: url(https://images.unsplash.com/flagged/photo-1575865655210-29e6bff713fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
-  height: 150px;
-  width: 100%;
-  background-position: 50% 42% !important;
-  text-indent: -9999px;
-  margin-right: 10px;
-}
-
-.hero .hero-right {
-  background-image: url(https://cdn-images-1.medium.com/fit/c/504/222/1*-o6fzNrq3WHE8Pjvo191kA.jpeg);
-}
-
-.hero .hero-text-right {
-  margin-left: -15px;
-}
-
-.hero .hero-image-right {
-  background-image: url(https://cdn-images-1.medium.com/fit/c/504/222/1*-o6fzNrq3WHE8Pjvo191kA.jpeg);
-}
-
-@media only screen and (min-width: 1360px) {
-  .hero .hero-image {
-    position: absolute;
-    left: -30%;
-    width: 120%;
-  }
-  .hero h5 {
-    margin-top: 175px;
-  }
-  .hero .hero-image-right {
-    right: -3%;
-    left: auto;
-    width: 103%;
-  }
-  .hero .hero {
-    left: 20px;
-  }
-}
-
 .FotoPerfil {
   border-radius: 50%;
 }
@@ -325,7 +280,7 @@
 }
 
 #font-title {
-  font-family: 'Crimson Text', serif;
+  font-family: "Crimson Text", serif;
   font-size: 45px;
   font-weight: bold;
   margin-left: 5px;
@@ -362,7 +317,7 @@
 }
 
 .paragraph-blog p {
-  font-family: 'Crimson Text', serif;
+  font-family: "Crimson Text", serif;
   font-size: 20px;
   font-weight: lighter;
 }
@@ -384,6 +339,15 @@ footer p {
 
 footer h4 {
   color: white;
+}
+
+@media (min-width: 728px) {
+  .image-blog {
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 800px;
+    height: 600px;
+  }
 }
 
 .footer-links {
