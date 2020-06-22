@@ -1,9 +1,25 @@
 var actionValue = '';
+$('[data-toggle="popover"]').popover({
+    html: true,
+    content: function() {
+        var content = $(this).data("popover-content");
+        return $(content).children(".popover-body").html();
+    },
+});
+const scrollRight = () => {
+    $(".horizontal-contenedor").animate({ scrollLeft: "1366px" }, 3000)
+    console.log("scroll")
+}
+const scrollToLeft = () => {
+    $(".horizontal-contenedor").animate({ scrollLeft: "0px" }, 3000)
+    console.log("scroll")
+}
+
 
 const callPopover = () => {
     $('[data-toggle="popover"]').popover({
         html: true,
-        content: function () {
+        content: function() {
             var content = $(this).data("popover-content");
             return $(content).children(".popover-body").html();
         },
@@ -57,7 +73,7 @@ const printCards = data => {
     let posts = [],
         timeStart = 0;
 
-    $.each(data, function (idx, post) {
+    $.each(data, function(idx, post) {
         if (post.created > timeStart) {
             position = [idx, post]
             posts.unshift(position)

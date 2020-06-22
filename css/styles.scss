@@ -8,9 +8,9 @@ svg {
 }
 
 .post-card {
-  h5 {
-    font-size: 1.06rem;
-  }
+    h5 {
+        font-size: 1.06rem;
+    }
 }
 
 .author {
@@ -35,6 +35,22 @@ svg {
   &:hover {
     cursor: pointer;
   }
+}
+
+.nav-control {
+    width: 20px;
+    text-align: center;
+    background: white;
+    &.left {
+        position: absolute;
+        top: 10px;
+        left: 0;
+    }
+    &.right {
+        position: absolute;
+        top: 10px;
+        right: 0;
+    }
 }
 
 .btn {
@@ -92,8 +108,9 @@ svg {
     img {
       min-height: 160px;
       max-height: 160px;
+
+        }
     }
-  }
 }
 
 .card-post-hide {
@@ -107,11 +124,14 @@ svg {
 }
 
 .horizontal-contenedor {
-  overflow-y: hidden;
-  overflow-x: auto;
-  width: auto;
-  height: 50px;
-  padding: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: auto;
+    height: 50px;
+    padding: 10px;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .list-scroll {
@@ -121,68 +141,16 @@ svg {
   white-space: nowrap;
   color: #6c757d;
   li {
-    margin-right: 15px;
-    a {
-      color: #6c757d;
-      &:hover {
-        color: black;
+      margin-right: 25px;
+      display: inline-block;
+      a {
+          color: #6c757d;
+          &:hover {
+              color: black
+          }
       }
-    }
   }
 }
-
-/*
-.parent-nav-sticky {
-    width: 100%;
-    position: sticky;
-    z-index: 1;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    background-color: #fff;
-    .nav-sticky {
-        align-items: flex-end;
-        width: 90%;
-        overflow: auto;
-        ul {
-            display: flex;
-            white-space: nowrap;
-            margin: 0;
-            padding: 0;
-            li {
-                margin: 0 7.5px;
-                list-style: none;
-                a {
-                    color: $color-muted;
-                    text-align: justify;
-                    text-decoration: none;
-                }
-            }
-        }
-    }
-    
-
-@media (min-width: 768px) {
-    .nav-sticky {
-        align-items: flex-end;
-        width: 85%;
-        overflow: auto;
-        ul {
-            display: flex;
-            justify-content: space-evenly;
-            li {
-                margin: 0 7.5px;
-                list-style: none;
-                a {
-                    color: $color-muted;
-                    text-align: justify;
-                }
-            }
-        }
-    }
-}
-}
-*/
 
 .nav-header {
   list-style: none;
@@ -216,46 +184,6 @@ svg {
     }
   }
 }
-
-// .hero {
-//     position: relative;
-//     .hero-image {
-//         display: block;
-//         background-image: url(https://images.unsplash.com/flagged/photo-1575865655210-29e6bff713fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
-//         height: 150px;
-//         width: 100%;
-//         background-position: 50% 42% !important;
-//         text-indent: -9999px;
-//         margin-right: 10px;
-//     }
-//     .hero-right {
-//         background-image: url(https://cdn-images-1.medium.com/fit/c/504/222/1*-o6fzNrq3WHE8Pjvo191kA.jpeg);
-//     }
-//     .hero-text-right {
-//         margin-left: -15px;
-//     }
-//     .hero-image-right {
-//         background-image: url(https://cdn-images-1.medium.com/fit/c/504/222/1*-o6fzNrq3WHE8Pjvo191kA.jpeg);
-//     }
-//     @media only screen and (min-width: 1360px) {
-//         .hero-image {
-//             position: absolute;
-//             left: -30%;
-//             width: 120%;
-//         }
-//         h5 {
-//             margin-top: 175px;
-//         }
-//         .hero-image-right {
-//             right: -3%;
-//             left: auto;
-//             width: 103%;
-//         }
-//         .hero {
-//             left: 20px;
-//         }
-//     }
-// }
 
 .FotoPerfil {
   border-radius: 50%;
@@ -319,7 +247,7 @@ svg {
 }
 
 #upgrade-medium {
-  opacity: 85%;
+    opacity: 85%;
 }
 
 #body-formulario {
@@ -394,6 +322,14 @@ footer {
   h4 {
     color: white;
   }
+}
+
+@media (min-width:728px) {
+    .image-blog {
+        object-fit: cover;
+        width: 800px;
+        height: 600px;
+    }
 }
 
 .footer-links {
