@@ -3,6 +3,7 @@ $color-green: #03a87c;
 $gray: rgba(0, 0, 0, 0.54);
 $gray-hover: #5d5e5e;
 $green-hover: #029e74;
+
 svg {
   fill: $color-muted;
 }
@@ -37,21 +38,62 @@ svg {
   }
 }
 
+.parent-nav-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+}
+
 .nav-control {
-    width: 20px;
     text-align: center;
     background: white;
     &.left {
         position: absolute;
-        top: 10px;
-        left: 0;
+        top: 26px;
+        left: -4px;
     }
     &.right {
         position: absolute;
-        top: 10px;
-        right: 0;
+        top: 26px;
+        right: -1px;
     }
 }
+
+.horizontal-contenedor {
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: auto;
+    height: 50px;
+    padding: 10px;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.list-scroll {
+    font-size: small;
+    margin: 5px;
+    list-style: none;
+    white-space: nowrap;
+    color: #6c757d;
+    ul {
+        width: 100%;
+    }
+    li {
+        margin-right: 25px;
+        display: inline-block;
+        a {
+            color: #6c757d;
+            &:hover {
+                color: black
+            }
+        }
+    }
+}
+
+
+
 
 .btn {
   border-radius: 5px;
@@ -122,6 +164,7 @@ svg {
   align-items: center;
   justify-content: center;
 }
+
 
 .horizontal-contenedor {
     overflow-x: auto;
