@@ -1,5 +1,4 @@
 var actionValue = '';
-<<<<<<< HEAD
 $('[data-toggle="popover"]').popover({
     html: true,
     content: function() {
@@ -11,12 +10,11 @@ const scrollRight = () => {
     $(".horizontal-contenedor").animate({ scrollRight: "+=1366px" }, "slow")
     console.log("scroll")
 }
-=======
 
 const callPopover = () => {
     $('[data-toggle="popover"]').popover({
         html: true,
-        content: function () {
+        content: function() {
             var content = $(this).data("popover-content");
             return $(content).children(".popover-body").html();
         },
@@ -24,7 +22,6 @@ const callPopover = () => {
 }
 
 
->>>>>>> 04d10d4d06cc3c1787a68347140177d3f769872d
 $('.popover-show').on('click', function(e) {
     e.preventDefault();
     actionValue = $(this).data('action-value');
@@ -71,7 +68,7 @@ const printCards = data => {
     let posts = [],
         timeStart = 0;
 
-    $.each(data, function (idx, post) {
+    $.each(data, function(idx, post) {
         if (post.created > timeStart) {
             position = [idx, post]
             posts.unshift(position)
