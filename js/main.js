@@ -1,13 +1,13 @@
-var actionValue =  '';
+var actionValue = '';
 $('[data-toggle="popover"]').popover({
     html: true,
-    content: function () {
+    content: function() {
         var content = $(this).data("popover-content");
         return $(content).children(".popover-body").html();
     },
 });
 
-$('.popover-show').on('click',function(e){
+$('.popover-show').on('click', function(e) {
     e.preventDefault();
     actionValue = $(this).data('action-value');
     let cardPostContainer = $(`[data-post-id=${actionValue}]`).children();
@@ -15,16 +15,17 @@ $('.popover-show').on('click',function(e){
     $('.popover-show').popover('hide')
 })
 
-$('.action-click').on('click',function(e){
+$('.action-click').on('click', function(e) {
     e.preventDefault();
     console.log('asdfghjk');
     alert();
 })
 
-$('.card-body-closed').click(function(){
-    $(this).closest('#card-learn').remove();
-})
-/* Hacer html dinamico */
+
+$('.card-body-closed').click(function() {
+        $(this).closest('#card-learn').remove();
+    })
+    /* Hacer html dinamico */
 
 /* Obteniendo los datos del formulario */
 const getUpgradeForm = () => {
@@ -40,12 +41,12 @@ const getUpgradeForm = () => {
     // $("#saveModal").modal("hide");
 };
 
-  /* Eventos */
+/* Eventos */
 
-$("#save-article").click(function(){
+$("#save-article").click(function() {
     window.location = '../formulario.html';
 });
 
-$("#toIndex").click(function(){
+$("#toIndex").click(function() {
     window.location = '../index.html';
 }); //boton regresar
