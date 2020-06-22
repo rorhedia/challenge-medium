@@ -2,6 +2,10 @@ svg {
   fill: #6c757d;
 }
 
+.post-card h5 {
+  font-size: 1.06rem;
+}
+
 .author {
   font-size: 11px;
   color: #6c757d;
@@ -79,6 +83,16 @@ svg {
 
 .popover-body ul li a {
   text-decoration: none;
+}
+
+.post-body a {
+  text-decoration: none;
+  color: black;
+}
+
+.post-body a img {
+  min-height: 160px;
+  max-height: 160px;
 }
 
 .card-post-hide {
@@ -347,7 +361,7 @@ svg {
 }
 
 #font-title {
-  font-family: 'Crimson Text', serif;
+  font-family: "Crimson Text", serif;
   font-size: 45px;
   font-weight: bold;
   margin-left: 5px;
