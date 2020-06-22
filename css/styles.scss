@@ -150,38 +150,6 @@ svg {
     }
 }
 
-
-/*
-.parent-nav-sticky {
-    width: 100%;
-    position: sticky;
-    z-index: 1;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    background-color: #fff;
-    .nav-sticky {
-        align-items: flex-end;
-        width: 90%;
-        overflow: auto;
-        ul {
-            display: flex;
-            white-space: nowrap;
-            margin: 0;
-            padding: 0;
-            li {
-                margin: 0 7.5px;
-                list-style: none;
-                a {
-                    color: $color-muted;
-                    text-align: justify;
-                    text-decoration: none;
-                }
-            }
-        }
-    }
-    
-
 @media (min-width: 768px) {
     .nav-sticky {
         align-items: flex-end;
@@ -201,8 +169,13 @@ svg {
         }
     }
 }
+
+.parent-nav-sticky {
+    width: 100%;
+    position: sticky;
+    z-index: 1;
+    top: 0;
 }
-*/
 
 .nav-header {
     list-style: none;
