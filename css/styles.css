@@ -348,4 +348,46 @@ svg {
   font-weight: lighter;
   color: gray;
 }
+
+.icons-blog {
+  font-size: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+.image-blog {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 800px;
+}
+
+.paragraph-blog p {
+  font-family: 'Crimson Text', serif;
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+.paragraph-blog h3 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+footer {
+  background-color: black;
+}
+
+footer p {
+  font-size: 12px;
+  color: #bbbbbb;
+}
+
+footer h4 {
+  color: white;
+}
+
+.footer-links {
+  color: white;
+}
 /*# sourceMappingURL=styles.css.map */
