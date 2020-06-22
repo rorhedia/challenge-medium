@@ -22,6 +22,18 @@ svg {
   font-size: 0.8rem;
 }
 
+.cursor-hand.left {
+  position: absolute;
+  top: 10px;
+  left: 0;
+}
+
+.cursor-hand.right {
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
 .cursor-hand:hover {
   cursor: pointer;
 }
@@ -98,8 +110,6 @@ svg {
 }
 
 .horizontal-contenedor {
-  overflow-y: hidden;
-  overflow-x: auto;
   width: auto;
   height: 50px;
   padding: 10px;
@@ -114,7 +124,7 @@ svg {
 }
 
 .list-scroll li {
-  margin-right: 15px;
+  margin-right: 25px;
 }
 
 .list-scroll li a {

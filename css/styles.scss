@@ -26,6 +26,16 @@ svg {
 }
 
 .cursor-hand {
+    &.left {
+        position: absolute;
+        top: 10px;
+        left: 0;
+    }
+    &.right {
+        position: absolute;
+        top: 10px;
+        right: 0;
+    }
     &:hover {
         cursor: pointer;
     }
@@ -89,8 +99,6 @@ svg {
 }
 
 .horizontal-contenedor {
-    overflow-y: hidden;
-    overflow-x: auto;
     width: auto;
     height: 50px;
     padding: 10px;
@@ -103,7 +111,7 @@ svg {
     white-space: nowrap;
     color: #6c757d;
     li {
-        margin-right: 15px;
+        margin-right: 25px;
         a {
             color: #6c757d;
             &:hover {

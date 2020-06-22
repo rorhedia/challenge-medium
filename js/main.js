@@ -6,7 +6,10 @@ $('[data-toggle="popover"]').popover({
         return $(content).children(".popover-body").html();
     },
 });
-
+const scrollRight = () => {
+    $(".horizontal-contenedor").animate({ scrollRight: "+=1366px" }, "slow")
+    console.log("scroll")
+}
 $('.popover-show').on('click', function(e) {
     e.preventDefault();
     actionValue = $(this).data('action-value');
