@@ -384,7 +384,17 @@ svg {
 .image-blog {
   -o-object-fit: cover;
      object-fit: cover;
-  width: 800px;
+  width: 400px;
+  height: 300px;
+}
+
+@media (min-width: 728px) {
+  .image-blog {
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 800px;
+    height: 600px;
+  }
 }
 
 .paragraph-blog p {
