@@ -28,6 +28,14 @@ $('.card-body-closed').click(function () {
     $(this).closest('#card-learn').remove();
 })
 
+const scrollRight = () => {
+    $(".horizontal-contenedor").animate({ scrollLeft: "1366px" }, 3000)
+}
+
+const scrollToLeft = () => {
+    $(".horizontal-contenedor").animate({ scrollLeft: "0px" }, 3000)
+}
+
 /* FUNCIONES */
 
 // Creación del objeto que será enviado al endpoint
@@ -330,52 +338,55 @@ $("#toIndex").click(function () {
 }); //boton regresar
 
 //Scroll Infinito
-window.addEventListener("scroll",(event => {
+window.addEventListener("scroll", (event => {
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 200) {
         ajax({ method: 'GET' }, infiniteScroll);
     }
 }))
 
 const infiniteScroll = data => {
-    //console.log(data)
-    $.each(data,function(index,post) {
-        console.log(post)
+    $.each(data, function (index, post) {
         $('#general-cards').append(`
-        <div class="row pt-5">
-        <div class="col-8 col-md-9 text-card-section">
-            <p class="text-muted mb-1">BASED ON YOUR READING HISTORY</p>
-            <h5 class="font-weight-bold mb-1">${post.title}</h5>
-            <p class="text-muted">${post.paragraph}</p>
-            <div class="row">
-                <div class="col-6">
-                    <!-- <span class="text-dark"></span><br> -->
-                    <div class="anchor"><a href="#">${post.name}</a> in <a href="#">Better Humans</a>
+            <div class="row pt-5">
+                <div class="col-8 col-md-9 text-card-section">
+                    <p class="text-muted mb-1">BASED ON YOUR READING HISTORY</p>
+                    <h5 class="font-weight-bold mb-1">${post.title}</h5>
+                    <p class="text-muted">${post.paragraph}</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <!-- <span class="text-dark"></span><br> -->
+
+                            <div class="anchor">
+                            <a href="#" data-placement="top" data-toggle="popover" data-popover-content="#popover-componentUser" data-trigger="hover">${post.name}</a>
+                                in
+                            <a href="#" data-placement="bottom" data-toggle="popover" data-popover-content="#popover-componentUser" data-trigger="hover">${post.company}</a>
+                            </div>
+                            <span class="text-muted">${timeConverter(post.created)}</span>
+                        </div>
+                        <div class="col-6 d-flex align-self-end justify-content-end">
+                            <span class="svgIcon svgIcon--bookmark svgIcon--25px">
+                                <svg class="svgIcon-use" width="25" height="25">
+                                    <path
+                                        d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z"
+                                        fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="svgIcon svgIcon--moreFilled svgIcon--25px is-flushRight">
+                                <svg class="svgIcon-use" width="25" height="25">
+                                    <path
+                                        d="M5 12.5c0 .552.195 1.023.586 1.414.39.39.862.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414A1.927 1.927 0 0 0 7 10.5c-.552 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.617 0c0 .552.196 1.023.586 1.414.391.39.863.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414a1.927 1.927 0 0 0-1.414-.586c-.551 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.6 0c0 .552.195 1.023.586 1.414.39.39.868.586 1.432.586.551 0 1.023-.195 1.413-.586.391-.39.587-.862.587-1.414 0-.552-.196-1.023-.587-1.414a1.927 1.927 0 0 0-1.413-.586c-.565 0-1.042.195-1.432.586-.39.39-.586.862-.587 1.414z"
+                                        fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </div>
                     </div>
-                    <span class="text-muted">${timeConverter(post.created)}</span>
                 </div>
-                <div class="col-6 d-flex align-self-end justify-content-end">
-                    <span class="svgIcon svgIcon--bookmark svgIcon--25px">
-                        <svg class="svgIcon-use" width="25" height="25">
-                            <path
-                                d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z"
-                                fill-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                    <span class="svgIcon svgIcon--moreFilled svgIcon--25px is-flushRight">
-                        <svg class="svgIcon-use" width="25" height="25">
-                            <path
-                                d="M5 12.5c0 .552.195 1.023.586 1.414.39.39.862.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414A1.927 1.927 0 0 0 7 10.5c-.552 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.617 0c0 .552.196 1.023.586 1.414.391.39.863.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414a1.927 1.927 0 0 0-1.414-.586c-.551 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.6 0c0 .552.195 1.023.586 1.414.39.39.868.586 1.432.586.551 0 1.023-.195 1.413-.586.391-.39.587-.862.587-1.414 0-.552-.196-1.023-.587-1.414a1.927 1.927 0 0 0-1.413-.586c-.565 0-1.042.195-1.432.586-.39.39-.586.862-.587 1.414z"
-                                fill-rule="evenodd"></path>
-                        </svg>
-                    </span>
+                <div class="col-4 col-md-3">
+                    <img class="w-100" src="${post.articlePhoto}" alt="img1">
                 </div>
             </div>
-        </div>
-        <div class="col-4 col-md-3">
-            <img class="w-100" src="${post.articlePhoto}" alt="img1">
-        </div>
-    </div>
-    `)
+        `)
     })
-    
+
+    callPopover();
 }
