@@ -329,18 +329,7 @@ $("#toIndex").click(function () {
     window.location = 'index.html';
 }); //boton regresar
 
-//Scroll infinito
-/*const addItems = 
-
-let scrollCounter = 1;
-$("#general-cards").on('scroll',() => {
-    console.log($('#general-cards').scrollTop());
-    let scrollPosition = $('#general-cards').scrollTop();
-    scrollPosition > 1000 * scrollCounter ? (addItems($('.card-learn')),
-    scrollCounter ++) : null;
-})
-addItems($('.card-learn'))*/
-
+//Scroll Infinito
 window.addEventListener("scroll",(event => {
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 200) {
         ajax({ method: 'GET' }, infiniteScroll);
@@ -348,22 +337,21 @@ window.addEventListener("scroll",(event => {
 }))
 
 const infiniteScroll = data => {
-    console.log(data)
+    //console.log(data)
     $.each(data,function(index,post) {
         console.log(post)
         $('#general-cards').append(`
         <div class="row pt-5">
         <div class="col-8 col-md-9 text-card-section">
             <p class="text-muted mb-1">BASED ON YOUR READING HISTORY</p>
-            <h5 class="font-weight-bold mb-1">How To Make Any Person Open Up And Feel Deeply Connected to You
-            </h5>
-            <p class="text-muted">Everything I learned from analizing my relationships for 6 months</p>
+            <h5 class="font-weight-bold mb-1">${post.title}</h5>
+            <p class="text-muted">${post.paragraph}</p>
             <div class="row">
                 <div class="col-6">
-                    <!-- <span class="text-dark">Jay Butera</span><br> -->
-                    <div class="anchor"><a href="#">prueba</a> in <a href="#">Better Humans</a>
+                    <!-- <span class="text-dark"></span><br> -->
+                    <div class="anchor"><a href="#">${post.name}</a> in <a href="#">Better Humans</a>
                     </div>
-                    <span class="text-muted">Oct 22, 2019 &CenterDot; 18 min read</span>
+                    <span class="text-muted">${timeConverter(post.created)}</span>
                 </div>
                 <div class="col-6 d-flex align-self-end justify-content-end">
                     <span class="svgIcon svgIcon--bookmark svgIcon--25px">
@@ -384,7 +372,7 @@ const infiniteScroll = data => {
             </div>
         </div>
         <div class="col-4 col-md-3">
-            <img class="w-100" src="https://miro.medium.com/max/1400/1*NoXGvKsELMXyGNne_V9GVw.jpeg" alt="img1">
+            <img class="w-100" src="${post.articlePhoto}" alt="img1">
         </div>
     </div>
     `)
