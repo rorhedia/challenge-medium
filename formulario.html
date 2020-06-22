@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
+    <link rel="icon" href="https://cdn-static-1.medium.com/_/fp/icons/favicon-rebrand-medium.3Y6xpZ-0FSdWDnPM3hSBIA.ico"
+        type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body id="body-formulario">
@@ -48,7 +50,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">User photo (URL)</label>
-                            <input type="url" class="form-control" name="user-photo" id="userPhoto"
+                            <input type="url" class="form-control" name="userPhoto" id="userPhoto"
                                 placeholder="User Photo" />
                         </div>
                     </div>
@@ -60,7 +62,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">Article photo (URL)</label>
-                            <input type="url" class="form-control" name="article-photo" id="articlePhoto"
+                            <input type="url" class="form-control" name="articlePhoto" id="articlePhoto"
                                 placeholder="Article Photo" />
                         </div>
                     </div>
@@ -82,22 +84,16 @@
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        
-                        <button type="button" class="btn btn-outline-info border-info w-50 mr-1" data-toggle="modal"
-                            data-target="#saveModal">
-                            Save your Article
-                        </button>
-                        <button type="button" id="toIndex" class="btn btn-outline-warning w-50 border-warning ml-1" data-toggle="modal"
-                            data-target="#saveModal">
-                            Return
-                        </button>
+                        <button type="button" id="save-post" class="btn btn-outline-info border-info w-50 mr-1">Save
+                            your Article</button>
+                        <a href="index.html" class="btn btn-outline-warning w-50 border-warning ml-1">Return</a>
                     </div>
 
                 </form>
             </div>
             <!-- col2 -->
             <div class="col-12 col-md-5 align-self-end mb-3 d-none d-md-block">
-                <img src="/images/1_90cu6c0u4ZL8H8ic1woZDw@2x.png" alt="" width="400px" />
+                <img src="images/1_90cu6c0u4ZL8H8ic1woZDw@2x.png" alt="" width="400px" />
             </div>
         </div>
     </div>
@@ -111,7 +107,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
-    <script src="/js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
