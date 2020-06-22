@@ -7,9 +7,14 @@ $('[data-toggle="popover"]').popover({
     },
 });
 const scrollRight = () => {
-    $(".horizontal-contenedor").animate({ scrollRight: "+=1366px" }, "slow")
+    $(".horizontal-contenedor").animate({ scrollLeft: "1366px" }, 3000)
     console.log("scroll")
 }
+const scrollToLeft = () => {
+    $(".horizontal-contenedor").animate({ scrollLeft: "0px" }, 3000)
+    console.log("scroll")
+}
+
 
 const callPopover = () => {
     $('[data-toggle="popover"]').popover({

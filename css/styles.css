@@ -26,20 +26,26 @@ svg {
   font-size: 0.8rem;
 }
 
-.cursor-hand.left {
+.cursor-hand:hover {
+  cursor: pointer;
+}
+
+.nav-control {
+  width: 20px;
+  text-align: center;
+  background: white;
+}
+
+.nav-control.left {
   position: absolute;
   top: 10px;
   left: 0;
 }
 
-.cursor-hand.right {
+.nav-control.right {
   position: absolute;
   top: 10px;
   right: 0;
-}
-
-.cursor-hand:hover {
-  cursor: pointer;
 }
 
 .btn {
@@ -124,9 +130,15 @@ svg {
 }
 
 .horizontal-contenedor {
+  overflow-x: auto;
+  overflow-y: hidden;
   width: auto;
   height: 50px;
   padding: 10px;
+}
+
+.horizontal-contenedor::-webkit-scrollbar {
+  display: none;
 }
 
 .list-scroll {
@@ -139,6 +151,7 @@ svg {
 
 .list-scroll li {
   margin-right: 25px;
+  display: inline-block;
 }
 
 .list-scroll li a {
@@ -362,6 +375,7 @@ svg {
   background-repeat: no-repeat;
   background-size: 600px;
   background-position: bottom;
+  opacity: 85%;
 }
 
 @media (min-width: 728px) {
@@ -371,7 +385,7 @@ svg {
 }
 
 #font-title {
-  font-family: "Crimson Text", serif;
+  font-family: 'Crimson Text', serif;
   font-size: 45px;
   font-weight: bold;
   margin-left: 5px;
