@@ -337,8 +337,17 @@ svg {
 }
 .image-blog{
   object-fit: cover;
-  width: 800px;
+  width: 400px;
+  height: 300px;
 }
+@media (min-width:728px){
+  .image-blog{
+    object-fit: cover;
+    width: 800px;
+    height: 600px;
+  }
+}
+
 .paragraph-blog p{
   font-family: 'Crimson Text', serif;
   font-size: 20px;
