@@ -1,6 +1,7 @@
 var actionValue = '';
 
 const callPopover = () => {
+    $('[data-toggle="tooltip"]').tooltip();
     $('[data-toggle="popover"]').popover({
         html: true,
         content: function () {
@@ -128,8 +129,7 @@ const printLeftPost = posts => {
                 <p class="text-muted d-flex justify-content-between">
                     <span>${timeConverter(posts[1].created)} &CenterDot; 
                     <span
-                    data-placement="top" data-toggle="popover" data-trigger="hover"
-                    data-content='<div class="text-light bg-dark py-1 px-2">Updated ${timeConverter(posts[1].created)}</div>'>5 min read</span> &starf;</span>
+                    data-placement="top" data-toggle="tooltip" data-trigger="hover" title="Updated ${timeConverter(posts[1].created)}"> 5 min read</span> &starf;</span>
                     <a class="popover-show" data-action-value="${posts[0]}" tabindex="0" data-trigger="focus" role="button" data-toggle="popover" data-placement="bottom" data-popover-content='#popover-component'>
                         <span>
                             <svg width="25" height="25">
@@ -173,8 +173,7 @@ const printCenterPost = posts => {
                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
                                     </svg>
-                                    <span data-toggle="popover" data-content='<div class="text-light bg-dark py-1 px-2">Updated ${timeConverter(posts[i][1].created)}</div>' data-placement="top"
-                                        data-trigger="hover">4 min read</span>
+                                    <span data-toggle="tooltip" title="Updated ${timeConverter(posts[1].created)}" data-placement="top" data-trigger="hover">4 min read</span>
 
                                     <svg class="bi bi-star-fill" width=".7em" height=".7em" viewBox="0 0 16 16"
                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -184,11 +183,18 @@ const printCenterPost = posts => {
                                 </p>
                             </div>
                             <div class="col-2">
-                                <svg class="svgIcon-use cursor-hand" width="25" height="25">
-                                    <path
-                                        d="M5 12.5c0 .552.195 1.023.586 1.414.39.39.862.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414A1.927 1.927 0 0 0 7 10.5c-.552 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.617 0c0 .552.196 1.023.586 1.414.391.39.863.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414a1.927 1.927 0 0 0-1.414-.586c-.551 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.6 0c0 .552.195 1.023.586 1.414.39.39.868.586 1.432.586.551 0 1.023-.195 1.413-.586.391-.39.587-.862.587-1.414 0-.552-.196-1.023-.587-1.414a1.927 1.927 0 0 0-1.413-.586c-.565 0-1.042.195-1.432.586-.39.39-.586.862-.587 1.414z"
-                                        fill-rule="evenodd"></path>
-                                </svg>
+
+                                <a class="popover-show" data-action-value="${posts[0]}" tabindex="0" data-trigger="focus" role="button" data-toggle="popover" data-placement="bottom" data-popover-content='#popover-component'>
+                                    <span>
+                                        <svg width="25" height="25">
+                                            <path
+                                                d="M5 12.5c0 .552.195 1.023.586 1.414.39.39.862.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414A1.927 1.927 0 0 0 7 10.5c-.552 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.617 0c0 .552.196 1.023.586 1.414.391.39.863.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414a1.927 1.927 0 0 0-1.414-.586c-.551 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.6 0c0 .552.195 1.023.586 1.414.39.39.868.586 1.432.586.551 0 1.023-.195 1.413-.586.391-.39.587-.862.587-1.414 0-.552-.196-1.023-.587-1.414a1.927 1.927 0 0 0-1.413-.586c-.565 0-1.042.195-1.432.586-.39.39-.586.862-.587 1.414z"
+                                                fill-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                </a>
+                            
+                                
                             </div>
                         </div>
                     </div>
@@ -204,7 +210,6 @@ const printRightPost = posts => {
             <h5>Publication muted</h5>
         </div>
         <div class="post-body">
-
             <a href="${posts[1].companyUrl}">
                 <img class="w-100" src="${posts[1].articlePhoto}" alt="img">
             </a>
@@ -221,9 +226,8 @@ const printRightPost = posts => {
                 
                 <p class="text-muted d-flex justify-content-between">
                     <span>${timeConverter(posts[1].created)} &CenterDot; 
-                    <span
-                    data-placement="top" data-toggle="popover" data-trigger="hover"
-                    data-content='<div class="text-light bg-dark py-1 px-2">Updated ${timeConverter(posts[1].created)}</div>'> 5 min read</span> &starf;</span>
+                        <span data-placement="top" data-toggle="tooltip" data-trigger="hover" title="Updated ${timeConverter(posts[1].created)}"> 5 min read</span> 
+                    &starf;</span>
                     <span>
                         <svg width="25" height="25">
                             <path
