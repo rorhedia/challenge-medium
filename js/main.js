@@ -38,6 +38,21 @@ const scrollToLeft = () => {
 
 /* FUNCIONES */
 
+const countViews = () => {
+    $('.counter').click(function () {
+        let id = $(this).data('id-post');
+        let counter = $(this).data('counter');
+        let data = {
+            method: 'PATCH',
+            request: {
+                id: id,
+                counter: counter
+            }
+        }
+        ajax(data, exito)
+    });
+}
+
 // Creación del objeto que será enviado al endpoint
 const setObjPost = () => {
     let form = $('#upgrade-medium').serializeArray(),
@@ -59,6 +74,9 @@ const setObjPost = () => {
     ajax(data, userSuccess);
 }
 
+const exito = () => {
+
+}
 // Función que pintará las cards en el dom
 const printCards = data => {
     let posts = [],
@@ -85,20 +103,22 @@ const printCards = data => {
     printPopularPost(posts);
 
     callPopover();
+    countViews();
 }
 
 const printLeftPost = posts => {
+    console.log(posts[1].popular);
     $('[data-post-id="rs1"]').append(`
         <div class="card-post-hide w-100 h-100 d-none">
             <h5>Publication muted</h5>
         </div>
         <div class="post-body">
             <a href="${posts[1].companyUrl}">
-                <img class="w-100" src="${posts[1].articlePhoto}" alt="img">
+                <img data-id-post="${posts[0]}" data-counter="${posts[1].popular}" class="w-100 counter" src="${posts[1].articlePhoto}" alt="img">
             </a>
             <div class="mt-2 col-9 col-sm-12 offset-lg-3 col-lg-9 p-0">
-                <a href="${posts[1].companyUrl}"><h5>${posts[1].title}</h5></a>
-                <a href="${posts[1].companyUrl}" class="text-muted">${posts[1].paragraph}</a>
+                <a href="${posts[1].companyUrl}"><h5 data-id-post="${posts[0]}" data-counter="${posts[1].popular}" class="counter">${posts[1].title}</h5></a>
+                <a href="${posts[1].companyUrl}" class="text-muted counter" data-id-post="${posts[0]}" data-counter="${posts[1].popular}">${posts[1].paragraph}</a>
                 <p class="anchor">
                     <a href="#" data-placement="top" data-toggle="popover"
                         data-popover-content="#popover-componentUser" data-trigger="hover">${posts[1].name}</a>
@@ -308,6 +328,12 @@ const ajax = (data, callback) => {
         urlEndpoint = '/.json';
     } else if (method == 'DELETE') {
         urlEndpoint = `${request}/.json`;
+    } else if (method == 'PATCH') {
+        urlEndpoint = `${request.id}/.json`;
+        let counter = parseInt(request.counter) + 1;
+        request = {popular:counter};
+        console.log(request);
+        // return
     }
 
     $.ajax({
