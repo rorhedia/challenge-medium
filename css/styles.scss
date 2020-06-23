@@ -105,9 +105,16 @@ svg {
 .btn-upgrade {
   border: 1px solid #888888;
   background-color: #fff;
+  display: none!important;
+  padding-top: 8px;
+
   &:hover {
     border: 1px solid black;
     background-color: #fff;
+  }
+  
+  @media (min-width: 768px) {
+    display: block!important;
   }
 }
 

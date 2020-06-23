@@ -107,7 +107,6 @@ const printCards = data => {
 }
 
 const printLeftPost = posts => {
-    console.log(posts[1].popular);
     $('[data-post-id="rs1"]').append(`
         <div class="card-post-hide w-100 h-100 d-none">
             <h5>Publication muted</h5>
