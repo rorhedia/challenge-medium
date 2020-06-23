@@ -335,7 +335,7 @@ const ajax = (data, callback) => {
         urlEndpoint = `${request.id}/.json`;
         let counter = parseInt(request.counter) + 1;
         request = {popular:counter};
-        console.log(request);
+        // console.log(request);
         // return
     }
 
