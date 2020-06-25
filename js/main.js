@@ -1,3 +1,12 @@
+const modalCards = (idCard) => {
+    $.get( `https://challenge-medium.firebaseio.com/posts/data/${idCard}/.json`, function( data ) {
+        console.log(data)
+        $('#modalCardsLabel').text(data.title)
+        $('.modal-body .anchor').text(data.paragraph)
+        $('.modal-body img').attr("src", data.articlePhoto);
+    });
+}
+
 var actionValue = '';
 
 const callPopover = () => {
@@ -105,20 +114,19 @@ const printCards = data => {
 
     callPopover();
     countViews();
+    //modalCards();
 }
-
+ 
 const printLeftPost = posts => {
     $('[data-post-id="rs1"]').append(`
         <div class="card-post-hide w-100 h-100 d-none">
             <h5>Publication muted</h5>
         </div>
         <div class="post-body">
-            <a href="${posts[1].companyUrl}">
-                <img data-id-post="${posts[0]}" data-counter="${posts[1].popular}" class="w-100 counter" src="${posts[1].articlePhoto}" alt="img">
-            </a>
+            <img data-id-post="${posts[0]}" onclick="modalCards('${posts[0]}')" data-counter="${posts[1].popular}" data-toggle="modal" data-target="#modalCards" class="cursor-hand w-100 counter" src="${posts[1].articlePhoto}" alt="img">
             <div class="mt-2 col-9 col-sm-12 offset-lg-3 col-lg-9 p-0">
-                <a href="${posts[1].companyUrl}"><h5 data-id-post="${posts[0]}" data-counter="${posts[1].popular}" class="counter">${posts[1].title}</h5></a>
-                <a href="${posts[1].companyUrl}" class="text-muted counter" data-id-post="${posts[0]}" data-counter="${posts[1].popular}">${posts[1].paragraph}</a>
+                <h5 data-id-post="${posts[0]}" data-toggle="modal" data-target="#modalCards" data-counter="${posts[1].popular}" class="cursor-hand counter">${posts[1].title}</h5>
+                <a href="#" class="text-muted counter" data-toggle="modal" data-target="#modalCards" data-id-post="${posts[0]}" data-counter="${posts[1].popular}">${posts[1].paragraph}</a>
                 <p class="anchor">
                     <a href="#" data-placement="top" data-toggle="popover"
                         data-popover-content="#popover-componentUser" data-trigger="hover">${posts[1].name}</a>
@@ -365,6 +373,7 @@ $("#save-article").click(function () {
 $("#toIndex").click(function () {
     window.location = 'index.html';
 }); //boton regresar
+
 
 //Scroll Infinito
 window.addEventListener("scroll", (event => {
