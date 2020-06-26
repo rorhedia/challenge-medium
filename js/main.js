@@ -1,6 +1,5 @@
 const modalCards = (idCard) => {
-    $.get( `https://challenge-medium.firebaseio.com/posts/data/${idCard}/.json`, function( data ) {
-        console.log(data)
+    $.get(`https://challenge-medium.firebaseio.com/posts/data/${idCard}/.json`, function(data) {
         $('#modalCardsLabel').text(data.title)
         $('.modal-body .anchor').text(data.paragraph)
         $('.modal-body img').attr("src", data.articlePhoto);
@@ -9,18 +8,33 @@ const modalCards = (idCard) => {
 
 var actionValue = '';
 
-const callPopover = () => {
+const callPopover = (posts) => {
+
     $('[data-toggle="tooltip"]').tooltip();
     $('[data-toggle="popover"]').popover({
         html: true,
-        content: function () {
-            var content = $(this).data("popover-content");
-            return $(content).children(".popover-body").html();
+        content: function() {
+            var popoverid = $(this).data("popoverid")
+            var arr = posts.filter((data) => data[0] == popoverid)
+
+            var popover = `<div class="card popover-body" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-tittle text-dark font-weight-bolder ">${arr[0][1].name}</h5>
+                <p class="card-tex text-muted ">${arr[0][1].paragraph}</p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="m-0">Followed by1.2K people</p>
+                    <div class="btn btn border-success text-success align-items-center ">Follow</div>
+                </div>
+            </div>
+        </div>
+            `
+            return popover
         },
     });
 }
 
-$('.popover-show').on('click', function (e) {
+$('.popover-show').on('click', function(e) {
     e.preventDefault();
     actionValue = $(this).data('action-value');
     let cardPostContainer = $(`[data-post-id=${actionValue}]`).children();
@@ -28,13 +42,13 @@ $('.popover-show').on('click', function (e) {
     $('.popover-show').popover('hide')
 })
 
-$('.action-click').on('click', function (e) {
+$('.action-click').on('click', function(e) {
     e.preventDefault();
     console.log('asdfghjk');
     alert();
 })
 
-$('.card-body-closed').click(function () {
+$('.card-body-closed').click(function() {
     $(this).closest('#card-learn').remove();
 })
 
@@ -49,7 +63,7 @@ const scrollToLeft = () => {
 /* FUNCIONES */
 
 const countViews = () => {
-    $('.counter').click(function () {
+    $('.counter').click(function() {
         let id = $(this).data('id-post');
         let counter = $(this).data('counter');
         let data = {
@@ -70,7 +84,7 @@ const setObjPost = () => {
         userObj = {},
         data = {};
 
-    $.each(form, function (idx, value) {
+    $.each(form, function(idx, value) {
         userObj[value.name] = value.value;
     })
 
@@ -86,13 +100,14 @@ const setObjPost = () => {
 
 const exito = () => {
 
-}
-// Función que pintará las cards en el dom
+    }
+    // Función que pintará las cards en el dom
 const printCards = data => {
+    console.log(data)
     let posts = [],
         timeStart = 0;
 
-    $.each(data, function (idx, post) {
+    $.each(data, function(idx, post) {
         if (post.created > timeStart) {
             position = [idx, post]
             posts.unshift(position)
@@ -112,12 +127,13 @@ const printCards = data => {
     // Seccion popular on medium
     printPopularPost(posts);
 
-    callPopover();
+    callPopover(posts);
     countViews();
-    
+
 }
 
 const printLeftPost = posts => {
+    console.log(posts)
     $('[data-post-id="rs1"]').append(`
         <div class="card-post-hide w-100 h-100 d-none">
             <h5>Publication muted</h5>
@@ -129,10 +145,10 @@ const printLeftPost = posts => {
                 <a href="#" class="text-muted counter" data-toggle="modal" data-target="#modalCards" data-id-post="${posts[0]}" data-counter="${posts[1].popular}">${posts[1].paragraph}</a>
                 <p class="anchor">
                     <a href="#" data-placement="top" data-toggle="popover"
-                        data-popover-content="#popover-componentUser" data-trigger="hover">${posts[1].name}</a>
+                        data-popover-content="#popover-componentUser" data-trigger="hover"  data-popoverid="${posts[0]}">${posts[1].name}</a>
                     in
-                    <a href="#" data-placement="bottom" data-toggle="popover"
-                        data-popover-content="#popover-componentUser" data-trigger="hover">${posts[1].company}</a>
+                    <a href="#" data-placement="bottom" data-toggle="popover" data-popover-content="#popover-componentUser" data-trigger="hover" data-popoverid="${posts[0]}">${posts[1].company}</a>
+                      
                 </p>
                 <p class="text-muted d-flex justify-content-between">
                     <span>${timeConverter(posts[1].created)} &CenterDot; 
@@ -171,10 +187,10 @@ const printCenterPost = posts => {
                         <div class="row">
                             <div class="col-10 author">
                                 <a href="#" data-placement="top" data-toggle="popover"
-                                    data-popover-content="#popover-componentUser" data-trigger="hover">${posts[i][1].name}</a>
+                                    data-popover-content="#popover-componentUser" data-trigger="hover" data-popoverid="${posts [i][0]}">${posts[i][1].name}</a>
                                 <span>in</span>
                                 <a href="#" data-placement="bottom" data-toggle="popover"
-                                    data-popover-content="#popover-componentUser" data-trigger="hover">${posts[i][1].company}</a>
+                                    data-popover-content="#popover-componentUser" data-trigger="hover" data-popoverid="${posts[i][0]}">${posts[i][1].company}</a>
 
                                 <p>${timeConverter(posts[i][1].created)}
                                     <svg class="bi bi-dot" width="1em" height="1em" viewBox="0 0 16 16"
@@ -222,10 +238,10 @@ const printRightPost = posts => {
                 <a href="#" class="text-muted counter" data-toggle="modal" data-target="#modalCards" class="cursor-hand text-muted">${posts[1].paragraph}</a>
                 <p class="anchor">
                     <a href="#" data-placement="top" data-toggle="popover"
-                        data-popover-content="#popover-componentUser" data-trigger="hover">${posts[1].name}</a>
+                        data-popover-content="#popover-componentUser" data-trigger="hover" data-popoverid="${posts[0]}">${posts[1].name}</a>
                     in
                     <a href="#" data-placement="bottom" data-toggle="popover"
-                        data-popover-content="#popover-componentUser" data-trigger="hover">${posts[1].company}</a>
+                        data-popover-content="#popover-componentUser" data-trigger="hover" data-popoverid="${posts[0]}">${posts[1].company}</a>
                 </p>
                 
                 <p class="text-muted d-flex justify-content-between">
@@ -247,7 +263,7 @@ const printRightPost = posts => {
 
 const printPopularPost = posts => {
     // let popularPosts = sortPopularPost(posts);
-    $.each(sortPopularPost(posts), function (idx, post) {
+    $.each(sortPopularPost(posts), function(idx, post) {
         idx++;
         $('[data-post-id="popularonmedium"]').append(`
             <div class="post-body">
@@ -280,12 +296,12 @@ const printPopularPost = posts => {
 const sortPopularPost = postArr => {
     let popularList = [];
 
-    $.each(postArr, function (idx, post) {
+    $.each(postArr, function(idx, post) {
         popularList[idx] = post[1];
         popularList[idx]['id'] = post[0];
     })
 
-    popularList.sort(function (a, b) {
+    popularList.sort(function(a, b) {
         return a.popular - b.popular;
     });
 
@@ -329,7 +345,7 @@ const msgDelete = () => {
  */
 const ajax = (data, callback) => {
     let { method, request } = data,
-        urlEndpoint = '';
+    urlEndpoint = '';
 
     if (method == 'POST' || method == 'GET') {
         urlEndpoint = '/.json';
@@ -338,7 +354,7 @@ const ajax = (data, callback) => {
     } else if (method == 'PATCH') {
         urlEndpoint = `${request.id}/.json`;
         let counter = parseInt(request.counter) + 1;
-        request = {popular:counter};
+        request = { popular: counter };
         // console.log(request);
         // return
     }
@@ -347,7 +363,7 @@ const ajax = (data, callback) => {
         url: `https://challenge-medium.firebaseio.com/posts/data/${urlEndpoint}`,
         method: method,
         data: JSON.stringify(request)
-    }).done(function (response, status) {
+    }).done(function(response, status) {
         console.log(status);
         if (status == 'success' && response !== null) {
             callback(response);
@@ -362,11 +378,11 @@ callPopover();
 
 $('#save-post').on('click', setObjPost)
 
-$("#save-article").click(function () {
+$("#save-article").click(function() {
     window.location = '../formulario.html';
 });
 
-$("#toIndex").click(function () {
+$("#toIndex").click(function() {
     window.location = 'index.html';
 }); //boton regresar
 
@@ -379,7 +395,7 @@ window.addEventListener("scroll", (event => {
 }))
 
 const infiniteScroll = data => {
-    $.each(data, function (index, post) {
+    $.each(data, function(index, post) {
         $('#general-cards').append(`
             <div class="row pt-5">
                 <div class="col-8 col-md-9 text-card-section">
@@ -392,9 +408,9 @@ const infiniteScroll = data => {
                             <!-- <span class="text-dark"></span><br> -->
 
                             <div class="anchor">
-                            <a href="#" data-placement="top" data-toggle="popover" data-popover-content="#popover-componentUser" data-trigger="hover">${post.name}</a>
+                            <a href="#" data-placement="top" data-toggle="popover" data-popover-content="#popover-componentUser" data-trigger="hover" data-popoverid="${index}">${post.name}</a>
                                 in
-                            <a href="#" data-placement="bottom" data-toggle="popover" data-popover-content="#popover-componentUser" data-trigger="hover">${post.company}</a>
+                            <a href="#" data-placement="bottom" data-toggle="popover" data-popover-content="#popover-componentUser" data-trigger="hover" data-popoverid="${index}">${post.company}</a>
                             </div>
                             <span class="text-muted">${timeConverter(post.created)}</span>
                         </div>
