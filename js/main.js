@@ -114,9 +114,9 @@ const printCards = data => {
 
     callPopover();
     countViews();
-    //modalCards();
+    
 }
- 
+
 const printLeftPost = posts => {
     $('[data-post-id="rs1"]').append(`
         <div class="card-post-hide w-100 h-100 d-none">
@@ -162,12 +162,12 @@ const printCenterPost = posts => {
             <div class="post-body">
                 <div class="row mb-2">
                     <div class="col-4 w-100 order-1 order-md-0">
-                        <img src="${posts[i][1].articlePhoto}" alt="image">
+                        <img onclick="modalCards('${posts[i][0]}')" data-counter="${posts[i].popular}" data-toggle="modal" data-target="#modalCards" class="cursor-hand w-100 counter" src="${posts[i][1].articlePhoto}" alt="image">
                     </div>
                     <div class="col-8 order-0">
-                        
-                        <a href="${posts[i][1].companyUrl}" class="font-weight-bolder mb-3">${posts[i][1].title}</a>
-                        <p><a href="${posts[i][1].companyUrl}" class="text-muted">${posts[i][1].paragraph}</a></p>
+                    
+                        <h5 href="#" data-toggle="modal" data-target="#modalCards" class="cursor-hand mb-3">${posts[i][1].title}</h5>
+                        <p><a href="#" class="text-muted counter" data-toggle="modal" data-target="#modalCards" class="cursor-hand text-muted">${posts[i][1].paragraph}</a></p>
                         <div class="row">
                             <div class="col-10 author">
                                 <a href="#" data-placement="top" data-toggle="popover"
@@ -191,7 +191,6 @@ const printCenterPost = posts => {
                                 </p>
                             </div>
                             <div class="col-2">
-
                                 <a class="popover-show" data-action-value="${posts[0]}" tabindex="0" data-trigger="focus" role="button" data-toggle="popover" data-placement="bottom" data-popover-content='#popover-component'>
                                     <span>
                                         <svg width="25" height="25">
@@ -201,8 +200,6 @@ const printCenterPost = posts => {
                                         </svg>
                                     </span>
                                 </a>
-                            
-                                
                             </div>
                         </div>
                     </div>
@@ -218,12 +215,11 @@ const printRightPost = posts => {
             <h5>Publication muted</h5>
         </div>
         <div class="post-body">
-            <a href="${posts[1].companyUrl}">
-                <img class="w-100" src="${posts[1].articlePhoto}" alt="img">
-            </a>
+                <img onclick="modalCards('${posts[0]}')" data-counter="${posts[1].popular}" data-toggle="modal" data-target="#modalCards" class="cursor-hand w-100" src="${posts[1].articlePhoto}" alt="img">
             <div>
-                <a href="${posts[1].companyUrl}"><h5>${posts[1].title}</h5></a>
-                <a href="${posts[1].companyUrl}" class="text-muted">${posts[1].paragraph}</a>
+                
+                <h5 href="#" data-toggle="modal" data-target="#modalCards" class="cursor-hand mb-3">${posts[1].title}</h5>
+                <a href="#" class="text-muted counter" data-toggle="modal" data-target="#modalCards" class="cursor-hand text-muted">${posts[1].paragraph}</a>
                 <p class="anchor">
                     <a href="#" data-placement="top" data-toggle="popover"
                         data-popover-content="#popover-componentUser" data-trigger="hover">${posts[1].name}</a>
@@ -256,26 +252,26 @@ const printPopularPost = posts => {
         $('[data-post-id="popularonmedium"]').append(`
             <div class="post-body">
                 <div class="row pb-3">
-                     <div class="col-3 col-sm-1 col-lg-3">
-                         <h2 class="text-muted text-right">0${idx}</h2>
-                     </div>
-                     <div class="col-9 col-sm-10 col-lg-9">
-                         <a href="${post.companyUrl}"><h5>${post.title}</h5></a>
-                         <p class="anchor">
+                    <div class="col-3 col-sm-1 col-lg-3">
+                        <h2 class="text-muted text-right">0${idx}</h2>
+                    </div>
+                    <div class="col-9 col-sm-10 col-lg-9">
+                        <a href="${post.companyUrl}"><h5>${post.title}</h5></a>
+                        <p class="anchor">
                             <a href="#" data-placement="top" data-toggle="popover"
                                 data-popover-content="#popover-componentUser" data-trigger="hover">${post.name}</a>
                             in
                             <a href="#" data-placement="bottom" data-toggle="popover"
                                 data-popover-content="#popover-componentUser" data-trigger="hover">${post.company}</a>
                         </p>
-                         <p class="text-muted d-flex justify-content-between">
-                         <span>${timeConverter(posts.created)} &CenterDot; 
-                         <span
+                        <p class="text-muted d-flex justify-content-between">
+                        <span>${timeConverter(posts.created)} &CenterDot; 
+                        <span
                             data-placement="top" data-toggle="popover" data-trigger="hover"
                             data-content='<div class="text-light bg-dark py-1 px-2">Updated ${timeConverter(posts.created)}</div>'> 5 min read</span> &starf;</span>
-                         </p>
-                     </div>
-                 </div>
+                        </p>
+                    </div>
+                </div>
             </div>
         `);
     })
@@ -388,8 +384,9 @@ const infiniteScroll = data => {
             <div class="row pt-5">
                 <div class="col-8 col-md-9 text-card-section">
                     <p class="text-muted mb-1">BASED ON YOUR READING HISTORY</p>
-                    <h5 class="font-weight-bold mb-1">${post.title}</h5>
-                    <p class="text-muted">${post.paragraph}</p>
+                    
+                    <h5 href="#" onclick="modalCards('${index}')" data-toggle="modal" data-target="#modalCards" class="cursor-hand font-weight-bold mb-1">${post.title}</h5>
+                    <p onclick="modalCards('${index}')" data-toggle="modal" data-target="#modalCards" class="cursor-hand text-muted">${post.paragraph}</p>
                     <div class="row">
                         <div class="col-6">
                             <!-- <span class="text-dark"></span><br> -->
@@ -420,7 +417,7 @@ const infiniteScroll = data => {
                     </div>
                 </div>
                 <div class="col-4 col-md-3">
-                    <img class="w-100" src="${post.articlePhoto}" alt="img1">
+                <img onclick="modalCards('${index}')" data-counter="${post.popular}" data-toggle="modal" data-target="#modalCards" class="cursor-hand w-100" src="${post.articlePhoto}" alt="img1">
                 </div>
             </div>
         `)
@@ -428,3 +425,4 @@ const infiniteScroll = data => {
 
     callPopover();
 }
+ajax({ method: 'GET' }, infiniteScroll);
