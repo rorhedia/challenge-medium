@@ -21,10 +21,6 @@ svg {
 .section-a-center-card {
     line-height: 1;
     font-size: 0.8rem;
-    img {
-        width: 100px;
-        height: 100px;
-    }
     a {
         color: black;
         font-size: 0.8rem;
@@ -239,6 +235,22 @@ svg {
     a {
         margin-left: 10px;
         color: $color-muted;
+    }
+}
+.size-custome {
+    object-fit: cover;
+    height: 150px;
+}
+.center-img-cards{
+    object-fit: cover;
+    height: 80px;
+    width: 80px;
+}
+@media (min-width:960px){
+    .center-img-cards{
+        object-fit: cover;
+        height: 100px;
+        width: 100px;
     }
 }
 

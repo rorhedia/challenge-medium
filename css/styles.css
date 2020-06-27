@@ -16,11 +16,6 @@ svg {
   font-size: 0.8rem;
 }
 
-.section-a-center-card img {
-  width: 100px;
-  height: 100px;
-}
-
 .section-a-center-card a {
   color: black;
   font-size: 0.8rem;
@@ -273,6 +268,28 @@ svg {
 .nav-header2 a {
   margin-left: 10px;
   color: #6c757d;
+}
+
+.size-custome {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 150px;
+}
+
+.center-img-cards {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 80px;
+  width: 80px;
+}
+
+@media (min-width: 960px) {
+  .center-img-cards {
+    -o-object-fit: cover;
+       object-fit: cover;
+    height: 100px;
+    width: 100px;
+  }
 }
 
 .popular-on-medium {

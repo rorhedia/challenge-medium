@@ -61,6 +61,7 @@ const printCards = () => {
     printLeftPost()
     printCenterPost()
     printRightPost()
+    infiniteScroll()
 }
 
 const printLeftPost = () => {
@@ -69,7 +70,7 @@ const printLeftPost = () => {
             <h5>Publication muted</h5>
         </div>
         <div class="post-body">
-            <img data-id-post="${postsArr[0].id}"class="cursor-hand w-100 counter"src="${postsArr[0].image}" alt="img">
+            <img data-id-post="${postsArr[0].id}"class="size-custome cursor-hand w-100 counter"src="${postsArr[0].image}" alt="img">
             <div class="mt-2 col-9 col-sm-12 offset-lg-3 col-lg-9 p-0">
                 <h5 data-id-post="${postsArr[0].id} "class="cursor-hand counter">${postsArr[0].title}</h5>
                 <a href="#" class="text-muted counter" data-id-post="${postsArr[0].id}">${postsArr[0].subtitle}</a>
@@ -104,7 +105,7 @@ const printCenterPost = posts => {
             <div class="post-body">
                 <div class="row mb-2">
                     <div class="col-4 w-100 order-1 order-md-0">
-                        <img data-id-post="${postsArr[i].id}" class="cursor-hand w-100 counter" src="${postsArr[i].image}" alt="image">
+                        <img data-id-post="${postsArr[i].id}" class="center-img-cards cursor-hand counter" src="${postsArr[i].image}" alt="image">
                     </div>
                     <div class="col-8 order-0">
                     
@@ -155,7 +156,7 @@ const printRightPost = () => {
             <h5>Publication muted</h5>
         </div>
         <div class="post-body">
-                <img data-id-post="${postsArr[4].id}" class="cursor-hand w-100" src="${postsArr[4].image}" alt="img">
+                <img data-id-post="${postsArr[4].id}" class="size-custome cursor-hand w-100" src="${postsArr[4].image}" alt="img">
             <div>
                 
                 <h5 href="#" class="cursor-hand mb-3">${postsArr[4].title}</h5>
@@ -181,6 +182,82 @@ const printRightPost = () => {
             </div>
         </div>
     `)
+}
+
+/*const printPopularPost = posts => {
+    $.each(sortPopularPost(posts), function(idx, post) {
+        idx++;
+        $('[data-post-id="popularonmedium"]').append(`
+            <div class="post-body">
+                <div class="row pb-3">
+                    <div class="col-3 col-sm-1 col-lg-3">
+                        <h2 class="text-muted text-right">${idx}</h2>
+                    </div>
+                    <div class="col-9 col-sm-10 col-lg-9">
+                        <h5>${postsArr[].title}</h5>
+                        <p class="anchor">
+                            <a href="#" data-placement="top" data-toggle="popover"
+                                data-popover-content="#popover-componentUser" onclick="modalCards('${idx}')" data-trigger="hover">${post.name}</a>
+                            in
+                            <a href="#" data-placement="bottom" data-toggle="popover"
+                                data-popover-content="#popover-componentUser" onclick="modalCards('${idx}')" data-trigger="hover">${post.company}</a>
+                        </p>
+                        <p class="text-muted d-flex justify-content-between">
+                        <span>${timeConverter(posts.created)} &CenterDot; 
+                        <span
+                            data-placement="top" data-toggle="popover" data-trigger="hover"
+                            data-content='<div class="text-light bg-dark py-1 px-2">Updated ${timeConverter(posts.created)}</div>'> 5 min read</span> &starf;</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        `);
+    })
+}*/
+
+const infiniteScroll = () => {
+    $.each(postsArr, function(index, post) {
+        console.log(post.title, post.subtitle)
+        $('#general-cards').append(`
+            <div class="row pt-5">
+                <div class="col-8 col-md-9 text-card-section">
+                    <p class="text-muted mb-1">BASED ON YOUR READING HISTORY</p>
+                    
+                    <h5 href="#" class="cursor-hand font-weight-bold mb-1">${post.title}</h5>
+                    <p class="cursor-hand text-muted">${post.subtitle}</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="anchor">
+                            <a href="#">${post.name}</a>
+                                in
+                            <a href="#">${post.company}</a>
+                            </div>
+                            <span class="text-muted">${timeConverter(post.created)}</span>
+                        </div>
+                        <div class="col-6 d-flex align-self-end justify-content-end">
+                            <span class="svgIcon svgIcon--bookmark svgIcon--25px">
+                                <svg class="svgIcon-use" width="25" height="25">
+                                    <path
+                                        d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z"
+                                        fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="svgIcon svgIcon--moreFilled svgIcon--25px is-flushRight">
+                                <svg class="svgIcon-use" width="25" height="25">
+                                    <path
+                                        d="M5 12.5c0 .552.195 1.023.586 1.414.39.39.862.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414A1.927 1.927 0 0 0 7 10.5c-.552 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.617 0c0 .552.196 1.023.586 1.414.391.39.863.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414a1.927 1.927 0 0 0-1.414-.586c-.551 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.6 0c0 .552.195 1.023.586 1.414.39.39.868.586 1.432.586.551 0 1.023-.195 1.413-.586.391-.39.587-.862.587-1.414 0-.552-.196-1.023-.587-1.414a1.927 1.927 0 0 0-1.413-.586c-.565 0-1.042.195-1.432.586-.39.39-.586.862-.587 1.414z"
+                                        fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-3">
+                    <img class="center-img-cards" src="${post.image}" alt="img1">
+                </div>
+            </div>
+        `)
+    })
 }
 
 const timeConverter = timestamp => {
