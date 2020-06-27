@@ -2,11 +2,11 @@ var postsArr = [];
 
 // Creación del objeto que será enviado al endpoint
 const setObjPost = () => {
-    let form    = $("#upgrade-medium").serializeArray(),
+    let form = $("#upgrade-medium").serializeArray(),
         created = Math.floor(Date.now() / 1000),
         userObj = {},
-        data    = {};
-    $.each(form, function (idx, value) {
+        data = {};
+    $.each(form, function(idx, value) {
         userObj[value.name] = value.value;
     })
     userObj["created"] = created;
@@ -60,6 +60,7 @@ const userSuccess = data => {
 const printCards = () => {
     printLeftPost()
     printCenterPost()
+    printRightPost()
 }
 
 const printLeftPost = () => {
@@ -148,6 +149,40 @@ const printCenterPost = posts => {
     }
 }
 
+const printRightPost = () => {
+    $('[data-post-id="rs3"]').append(`
+        <div class="card-post-hide w-100 h-100 d-none">
+            <h5>Publication muted</h5>
+        </div>
+        <div class="post-body">
+                <img data-id-post="${postsArr[4].id}" class="cursor-hand w-100" src="${postsArr[4].image}" alt="img">
+            <div>
+                
+                <h5 href="#" class="cursor-hand mb-3">${postsArr[4].title}</h5>
+                <a href="#" class="text-muted counter" >${postsArr[4].subtitle}</a>
+                <p class="anchor">
+                    <a href="#" >${postsArr[4].name}</a>
+                    in
+                    <a href="#" >${postsArr[4].company}</a>
+                </p>
+                
+                <p class="text-muted d-flex justify-content-between">
+                    <span>${timeConverter(postsArr[4].created)} &CenterDot; 
+                        <span> ${randomRead()} min read</span> 
+                    &starf;</span>
+                    <span>
+                        <svg width="25" height="25">
+                            <path
+                                d="M5 12.5c0 .552.195 1.023.586 1.414.39.39.862.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414A1.927 1.927 0 0 0 7 10.5c-.552 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.617 0c0 .552.196 1.023.586 1.414.391.39.863.586 1.414.586.552 0 1.023-.195 1.414-.586.39-.39.586-.862.586-1.414 0-.552-.195-1.023-.586-1.414a1.927 1.927 0 0 0-1.414-.586c-.551 0-1.023.195-1.414.586-.39.39-.586.862-.586 1.414zm5.6 0c0 .552.195 1.023.586 1.414.39.39.868.586 1.432.586.551 0 1.023-.195 1.413-.586.391-.39.587-.862.587-1.414 0-.552-.196-1.023-.587-1.414a1.927 1.927 0 0 0-1.413-.586c-.565 0-1.042.195-1.432.586-.39.39-.586.862-.587 1.414z"
+                                fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                </p>
+            </div>
+        </div>
+    `)
+}
+
 const timeConverter = timestamp => {
     let a = new Date(timestamp * 1000);
     let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -160,6 +195,14 @@ const timeConverter = timestamp => {
 
 const randomRead = () => {
     return Math.floor(Math.random() * 15) + 1;
+}
+
+const scrollRight = () => {
+    $(".horizontal-contenedor").animate({ scrollLeft: "1366px" }, 3000)
+}
+
+const scrollToLeft = () => {
+    $(".horizontal-contenedor").animate({ scrollLeft: "0px" }, 3000)
 }
 
 ajax("GET", setDataArr)
