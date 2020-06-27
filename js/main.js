@@ -11,19 +11,17 @@ const popoverMenu = () => {
 }
 
 const callPopover = (posts) => {
-
     $('[data-toggle="tooltip"]').tooltip();
     $('[data-toggle="popover"]').popover({
         html: true,
         content: function () {
-            console.log(posts);
             let popoverid = $(this).data("popoverid"),
                 arr       = posts.filter((data) => data[0] == popoverid),
                 popover   = `
                 <div class="card popover-body" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-tittle text-dark font-weight-bolder ">${arr[0][1].name}</h5>
-                        <p class="card-tex text-muted ">${arr[0][1].paragraph}</p>
+                        <h5 class="card-tittle text-dark font-weight-bolder">${arr[0][1].name}</h5>
+                        <p class="card-tex text-muted">${arr[0][1].paragraph}</p>
                         <hr>
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="m-0">Followed by1.2K people</p>
@@ -182,11 +180,11 @@ const printCenterPost = posts => {
             <div class="post-body">
                 <div class="row mb-2">
                     <div class="col-4 w-100 order-1 order-md-0">
-                        <img onclick="modalCards('${posts[i][0]}')" data-counter="${posts[i].popular}" data-toggle="modal" data-target="#modalCards" class="cursor-hand w-100 counter" src="${posts[i][1].articlePhoto}" alt="image">
+                        <img onclick="modalCards('${posts[i][0]}')" data-counter="${posts[i][1].popular}" data-id-post="${posts[i][0]}" data-toggle="modal" data-target="#modalCards" class="cursor-hand w-100 counter" src="${posts[i][1].articlePhoto}" alt="image">
                     </div>
                     <div class="col-8 order-0">
                     
-                        <h5 href="#" onclick="modalCards('${posts[i][0]}')" data-toggle="modal" data-target="#modalCards" class="cursor-hand mb-3">${posts[i][1].title}</h5>
+                        <h5 href="#" onclick="modalCards('${posts[i][0]}')" data-counter="${posts[i][1].popular}" data-id-post="${posts[i][0]}" data-toggle="modal" data-target="#modalCards" class="counter cursor-hand mb-3">${posts[i][1].title}</h5>
                         <p><a href="#" onclick="modalCards('${posts[i][0]}')" class="text-muted counter" data-toggle="modal" data-target="#modalCards" class="cursor-hand text-muted">${posts[i][1].paragraph}</a></p>
                         <div class="row">
                             <div class="col-10 author">
@@ -235,7 +233,7 @@ const printRightPost = posts => {
             <h5>Publication muted</h5>
         </div>
         <div class="post-body">
-                <img onclick="modalCards('${posts[0]}')" data-counter="${posts[1].popular}" data-toggle="modal" data-target="#modalCards" class="cursor-hand w-100" src="${posts[1].articlePhoto}" alt="img">
+                <img onclick="modalCards('${posts[0]}')" data-counter="${posts[1].popular}" data-id-post="${posts[0]}" data-toggle="modal" data-target="#modalCards" class="counter cursor-hand w-100" src="${posts[1].articlePhoto}" alt="img">
             <div>
                 
                 <h5 href="#" onclick="modalCards('${posts[0]}')" data-toggle="modal" data-target="#modalCards" class="cursor-hand mb-3">${posts[1].title}</h5>
@@ -266,23 +264,22 @@ const printRightPost = posts => {
 }
 
 const printPopularPost = posts => {
-    // let popularPosts = sortPopularPost(posts);
     $.each(sortPopularPost(posts), function (idx, post) {
         idx++;
         $('[data-post-id="popularonmedium"]').append(`
             <div class="post-body">
                 <div class="row pb-3">
                     <div class="col-3 col-sm-1 col-lg-3">
-                        <h2 class="text-muted text-right">0${idx}</h2>
+                        <h2 class="text-muted text-right">${idx}</h2>
                     </div>
                     <div class="col-9 col-sm-10 col-lg-9">
-                        <a href="${post.companyUrl}"><h5>${post.title}</h5></a>
+                        <h5 onclick="modalCards('${post.id}')" data-toggle="modal" data-target="#modalCards">${post.title}</h5>
                         <p class="anchor">
                             <a href="#" data-placement="top" data-toggle="popover"
-                                data-popover-content="#popover-componentUser" data-trigger="hover">${post.name}</a>
+                                data-popover-content="#popover-componentUser" onclick="modalCards('${idx}')" data-trigger="hover">${post.name}</a>
                             in
                             <a href="#" data-placement="bottom" data-toggle="popover"
-                                data-popover-content="#popover-componentUser" data-trigger="hover">${post.company}</a>
+                                data-popover-content="#popover-componentUser" onclick="modalCards('${idx}')" data-trigger="hover">${post.company}</a>
                         </p>
                         <p class="text-muted d-flex justify-content-between">
                         <span>${timeConverter(posts.created)} &CenterDot; 
