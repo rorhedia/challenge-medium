@@ -66,17 +66,15 @@ const printCards = () => {
 }
 
 const printLeftPost = () => {
-    let dataCard = postsArr[0]
-    console.log(dataCard)
     $('[data-post-id="rs1"]').append(`
         <div class="card-post-hide w-100 h-100 d-none">
             <h5>Publication muted</h5>
         </div>
         <div class="post-body">
-            <img onclick="modalCards(${dataCard})" data-id-post="${postsArr[0].id}" data-toggle="modal" data-target="#modalCards"  class="size-custome cursor-hand w-100 counter"src="${postsArr[0].image}" alt="img">
+            <img onclick="modalCards('${postsArr[0].id}')" data-toggle="modal" data-target="#modalCards"  class="size-custome cursor-hand w-100 counter" src="${postsArr[0].image}" alt="img">
             <div class="mt-2 col-9 col-sm-12 offset-lg-3 col-lg-9 p-0">
-                <h5 data-id-post="${postsArr[0].id} "class="cursor-hand counter">${postsArr[0].title}</h5>
-                <a href="#" class="text-muted counter" data-id-post="${postsArr[0].id}">${postsArr[0].subtitle}</a>
+                <h5 class="cursor-hand counter">${postsArr[0].title}</h5>
+                <a href="#" class="text-muted counter">${postsArr[0].subtitle}</a>
                 <p class="anchor">
                     <a href="#">${postsArr[0].name}</a>
                     in
@@ -99,6 +97,7 @@ const printLeftPost = () => {
         </div>
     `);
 }
+
 const printCenterPost = posts => {
     for (let i = 1; i <= 3; i++) {
         $('[data-post-id="rs2"]').append(`
@@ -264,12 +263,13 @@ const sortPopularPost = () => {
     return postsArr.reverse().splice(0, 4);
 }
 
-const modalCards = ({dataCard}) => {
-    console.log(dataCard)
-        //$('#modalCardsLabel').text(data.title)
-        //$('.modal-body .anchor').text(data.paragraph)
-        //$('.modal-body img').attr("src", data.image);
-
+const modalCards = idCard => {
+    $.get(`https://challenge-medium.firebaseio.com/posts/data/${idCard}/.json`, function(data) {
+        console.log(data);
+        // $('#modalCardsLabel').text(data.title)
+        // $('.modal-body .anchor').text(data.paragraph)
+        // $('.modal-body img').attr("src", data.image);
+    })
 }
 
 const timeConverter = timestamp => {
