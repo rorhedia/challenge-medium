@@ -73,7 +73,7 @@ const printLeftPost = () => {
         <div class="post-body">
             <img onclick="modalCards('${postsArr[0].id}')" data-toggle="modal" data-target="#modalCards"  class="size-custome cursor-hand w-100 counter" src="${postsArr[0].image}" alt="img">
             <div class="mt-2 col-9 col-sm-12 offset-lg-3 col-lg-9 p-0">
-                <h5 class="cursor-hand counter">${postsArr[0].title}</h5>
+                <h5 onclick="modalCards('${postsArr[0].id}')" data-toggle="modal" data-target="#modalCards" class="cursor-hand counter">${postsArr[0].title}</h5>
                 <a href="#" class="text-muted counter">${postsArr[0].subtitle}</a>
                 <p class="anchor">
                     <a href="#">${postsArr[0].name}</a>
@@ -266,9 +266,11 @@ const sortPopularPost = () => {
 const modalCards = idCard => {
     $.get(`https://challenge-medium.firebaseio.com/posts/data/${idCard}/.json`, function(data) {
         console.log(data);
-        // $('#modalCardsLabel').text(data.title)
-        // $('.modal-body .anchor').text(data.paragraph)
-        // $('.modal-body img').attr("src", data.image);
+        $('.modal-body img').attr("src", data.image);
+        $('#modalCardsLabel').text(data.title)
+        $('.modal-body .anchor').text(data.subtitle)
+        $('.modal-body .parrafo').text(data.paragraph)
+        
     })
 }
 
