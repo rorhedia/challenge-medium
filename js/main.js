@@ -66,12 +66,14 @@ const printCards = () => {
 }
 
 const printLeftPost = () => {
+    let dataCard = postsArr[0]
+    console.log(dataCard)
     $('[data-post-id="rs1"]').append(`
         <div class="card-post-hide w-100 h-100 d-none">
             <h5>Publication muted</h5>
         </div>
         <div class="post-body">
-            <img data-id-post="${postsArr[0].id}"class="size-custome cursor-hand w-100 counter"src="${postsArr[0].image}" alt="img">
+            <img onclick="modalCards(${dataCard})" data-id-post="${postsArr[0].id}" data-toggle="modal" data-target="#modalCards"  class="size-custome cursor-hand w-100 counter"src="${postsArr[0].image}" alt="img">
             <div class="mt-2 col-9 col-sm-12 offset-lg-3 col-lg-9 p-0">
                 <h5 data-id-post="${postsArr[0].id} "class="cursor-hand counter">${postsArr[0].title}</h5>
                 <a href="#" class="text-muted counter" data-id-post="${postsArr[0].id}">${postsArr[0].subtitle}</a>
@@ -260,6 +262,14 @@ const sortPopularPost = () => {
         return a.popular - b.popular;
     });
     return postsArr.reverse().splice(0, 4);
+}
+
+const modalCards = ({dataCard}) => {
+    console.log(dataCard)
+        //$('#modalCardsLabel').text(data.title)
+        //$('.modal-body .anchor').text(data.paragraph)
+        //$('.modal-body img').attr("src", data.image);
+
 }
 
 const timeConverter = timestamp => {
