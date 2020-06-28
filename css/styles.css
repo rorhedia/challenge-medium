@@ -302,7 +302,7 @@ svg {
 .popular-on-medium {
   position: -webkit-sticky;
   position: sticky;
-  top: -20px;
+  top: -10px;
 }
 
 .popular-on-medium .nav-popular a {

@@ -98,7 +98,7 @@ const printLeftPost = () => {
     `);
 }
 
-const printCenterPost = posts => {
+const printCenterPost = () => {
     for (let i = 1; i <= 3; i++) {
         $('[data-post-id="rs2"]').append(`
             <div class="card-post-hide w-100 h-100 d-none">
@@ -107,11 +107,11 @@ const printCenterPost = posts => {
             <div class="post-body">
                 <div class="row mb-2">
                     <div class="col-4 w-100 order-1 order-md-0">
-                        <img data-id-post="${postsArr[i].id}" class="center-img-cards cursor-hand counter" src="${postsArr[i].image}" alt="image">
+                        <img onclick="modalCards('${postsArr[i].id}')" data-toggle="modal" data-target="#modalCards" class="center-img-cards cursor-hand counter" src="${postsArr[i].image}" alt="image">
                     </div>
                     <div class="col-8 order-0">
                     
-                        <h5 href="#"  data-id-post="${postsArr[i].id}" class="counter cursor-hand mb-3">${postsArr[i].title}</h5>
+                        <h5 href="#" onclick="modalCards('${postsArr[i].id}')" data-toggle="modal" data-target="#modalCards" class="counter cursor-hand mb-3">${postsArr[i].title}</h5>
                         <p><a href="#" class="cursor-hand text-muted">${postsArr[i].subtitle}</a></p>
                         <div class="row">
                             <div class="col-10 author">
@@ -158,10 +158,10 @@ const printRightPost = () => {
             <h5>Publication muted</h5>
         </div>
         <div class="post-body">
-                <img data-id-post="${postsArr[4].id}" class="size-custome cursor-hand w-100" src="${postsArr[4].image}" alt="img">
+                <img onclick="modalCards('${postsArr[4].id}')" data-toggle="modal" data-target="#modalCards" class="size-custome cursor-hand w-100" src="${postsArr[4].image}" alt="img">
             <div>
                 
-                <h5 href="#" class="cursor-hand mb-3">${postsArr[4].title}</h5>
+                <h5 class="cursor-hand mb-3" onclick="modalCards('${postsArr[4].id}')" data-toggle="modal" data-target="#modalCards">${postsArr[4].title}</h5>
                 <a href="#" class="text-muted counter" >${postsArr[4].subtitle}</a>
                 <p class="anchor">
                     <a href="#" >${postsArr[4].name}</a>
@@ -192,7 +192,7 @@ const infiniteScroll = () => {
             <div class="row pt-5">
                 <div class="col-8 col-md-9 text-card-section">
                     <p class="text-muted mb-1">BASED ON YOUR READING HISTORY</p>                    
-                    <h5 href="#" class="cursor-hand font-weight-bold mb-1">${post.title}</h5>
+                    <h5 href="#" class="cursor-hand font-weight-bold mb-1"onclick="modalCards('${post.id}')" data-toggle="modal" data-target="#modalCards">${post.title}</h5>
                     <p class="cursor-hand text-muted">${post.subtitle}</p>
                     <div class="row">
                         <div class="col-6">
@@ -222,7 +222,7 @@ const infiniteScroll = () => {
                     </div>
                 </div>
                 <div class="col-4 col-md-3">
-                    <img class="infinte-card " src="${post.image}" alt="img1">
+                    <img onclick="modalCards('${post.id}')" data-toggle="modal" data-target="#modalCards"  class="infinte-card cursor-hand" src="${post.image}" alt="img1" >
                 </div>
             </div>
         `)
@@ -236,10 +236,10 @@ const printPopularPost = () => {
             <div class="post-body">
                 <div class="row pb-3">
                     <div class="col-3 col-sm-1 col-lg-3">
-                        <h2 class="text-muted text-right">${idx}</h2>
+                        <h2 class="text-muted text-right">0${idx}</h2>
                     </div>
                     <div class="col-9 col-sm-10 col-lg-9">
-                        <h5>${post.title}</h5>
+                        <h5 onclick="modalCards('${post.id}')" data-toggle="modal" data-target="#modalCards" class="cursor-hand">${post.title}</h5>
                         <p class="anchor">
                             <a href="#">${post.name}</a>
                             in
@@ -265,12 +265,11 @@ const sortPopularPost = () => {
 
 const modalCards = idCard => {
     $.get(`https://challenge-medium.firebaseio.com/posts/data/${idCard}/.json`, function(data) {
-        console.log(data);
         $('.modal-body img').attr("src", data.image);
         $('#modalCardsLabel').text(data.title)
         $('.modal-body .anchor').text(data.subtitle)
         $('.modal-body .parrafo').text(data.paragraph)
-        
+
     })
 }
 
