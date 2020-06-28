@@ -237,21 +237,30 @@ svg {
         color: $color-muted;
     }
 }
+
 .size-custome {
     object-fit: cover;
     height: 150px;
 }
-.center-img-cards{
+
+.center-img-cards {
     object-fit: cover;
     height: 80px;
     width: 80px;
 }
-@media (min-width:960px){
-    .center-img-cards{
+
+@media (min-width:960px) {
+    .center-img-cards {
         object-fit: cover;
         height: 100px;
         width: 100px;
     }
+}
+
+.infinte-card {
+    object-fit: cover;
+    width: 110px;
+    height: 110px;
 }
 
 .popular-on-medium {

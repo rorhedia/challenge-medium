@@ -62,6 +62,7 @@ const printCards = () => {
     printCenterPost()
     printRightPost()
     infiniteScroll()
+    printPopularPost()
 }
 
 const printLeftPost = () => {
@@ -184,45 +185,12 @@ const printRightPost = () => {
     `)
 }
 
-/*const printPopularPost = posts => {
-    $.each(sortPopularPost(posts), function(idx, post) {
-        idx++;
-        $('[data-post-id="popularonmedium"]').append(`
-            <div class="post-body">
-                <div class="row pb-3">
-                    <div class="col-3 col-sm-1 col-lg-3">
-                        <h2 class="text-muted text-right">${idx}</h2>
-                    </div>
-                    <div class="col-9 col-sm-10 col-lg-9">
-                        <h5>${postsArr[].title}</h5>
-                        <p class="anchor">
-                            <a href="#" data-placement="top" data-toggle="popover"
-                                data-popover-content="#popover-componentUser" onclick="modalCards('${idx}')" data-trigger="hover">${post.name}</a>
-                            in
-                            <a href="#" data-placement="bottom" data-toggle="popover"
-                                data-popover-content="#popover-componentUser" onclick="modalCards('${idx}')" data-trigger="hover">${post.company}</a>
-                        </p>
-                        <p class="text-muted d-flex justify-content-between">
-                        <span>${timeConverter(posts.created)} &CenterDot; 
-                        <span
-                            data-placement="top" data-toggle="popover" data-trigger="hover"
-                            data-content='<div class="text-light bg-dark py-1 px-2">Updated ${timeConverter(posts.created)}</div>'> 5 min read</span> &starf;</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        `);
-    })
-}*/
-
 const infiniteScroll = () => {
     $.each(postsArr, function(index, post) {
-        console.log(post.title, post.subtitle)
         $('#general-cards').append(`
             <div class="row pt-5">
                 <div class="col-8 col-md-9 text-card-section">
-                    <p class="text-muted mb-1">BASED ON YOUR READING HISTORY</p>
-                    
+                    <p class="text-muted mb-1">BASED ON YOUR READING HISTORY</p>                    
                     <h5 href="#" class="cursor-hand font-weight-bold mb-1">${post.title}</h5>
                     <p class="cursor-hand text-muted">${post.subtitle}</p>
                     <div class="row">
@@ -253,11 +221,45 @@ const infiniteScroll = () => {
                     </div>
                 </div>
                 <div class="col-4 col-md-3">
-                    <img class="center-img-cards" src="${post.image}" alt="img1">
+                    <img class="infinte-card " src="${post.image}" alt="img1">
                 </div>
             </div>
         `)
     })
+}
+
+const printPopularPost = () => {
+    $.each(sortPopularPost(), function(idx, post) {
+        idx++;
+        $('[data-post-id="popularonmedium"]').append(`
+            <div class="post-body">
+                <div class="row pb-3">
+                    <div class="col-3 col-sm-1 col-lg-3">
+                        <h2 class="text-muted text-right">${idx}</h2>
+                    </div>
+                    <div class="col-9 col-sm-10 col-lg-9">
+                        <h5>${post.title}</h5>
+                        <p class="anchor">
+                            <a href="#">${post.name}</a>
+                            in
+                            <a href="#">${post.company}</a>
+                        </p>
+                        <p class="text-muted d-flex justify-content-between">
+                        <span>${timeConverter(post.created)} &CenterDot; 5 min read &starf;</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        `);
+    })
+}
+
+const sortPopularPost = () => {
+
+    postsArr.sort(function(a, b) {
+        return a.popular - b.popular;
+    });
+    return postsArr.reverse().splice(0, 4);
 }
 
 const timeConverter = timestamp => {
@@ -281,6 +283,7 @@ const scrollRight = () => {
 const scrollToLeft = () => {
     $(".horizontal-contenedor").animate({ scrollLeft: "0px" }, 3000)
 }
+
 
 ajax("GET", setDataArr)
 

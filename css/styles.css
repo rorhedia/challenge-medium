@@ -292,6 +292,13 @@ svg {
   }
 }
 
+.infinte-card {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 110px;
+  height: 110px;
+}
+
 .popular-on-medium {
   position: -webkit-sticky;
   position: sticky;
