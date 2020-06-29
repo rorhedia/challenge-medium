@@ -7,7 +7,7 @@ const setObjPost = () => {
         created = Math.floor(Date.now() / 1000),
         userObj = {},
         data = {};
-    $.each(form, function (idx, value) {
+    $.each(form, function(idx, value) {
         userObj[value.name] = value.value;
     })
     userObj["created"] = created;
@@ -35,7 +35,7 @@ const ajax = (method, callback, request = {}) => {
         url: urlEndpoint,
         method: method,
         data: JSON.stringify(request)
-    }).done(function (response, status) {
+    }).done(function(response, status) {
         if (status == 'success' && response !== null) {
             callback(response);
         }
@@ -43,7 +43,7 @@ const ajax = (method, callback, request = {}) => {
 }
 
 const setDataArr = response => {
-    $.each(response, function (key, value) {
+    $.each(response, function(key, value) {
         value["id"] = key
         postsArr.push(value)
     })
@@ -85,7 +85,7 @@ const printLeftPost = () => {
                 </p>
                 <p class="text-muted d-flex justify-content-between">
                     <span>${timeConverter(postsArr[0].created)} &CenterDot; 
-                    <span> ${randomRead()} min read</span> &starf;</span>
+                    <span > ${randomRead()} min read</span> &starf;</span>
                     <div>
                         <span>
                             <svg width="25" height="25">
@@ -167,15 +167,14 @@ const printRightPost = () => {
                 <h5 class="cursor-hand mb-3" onclick="modalCards('${postsArr[4].id}')" data-toggle="modal" data-target="#modalCards">${postsArr[4].title}</h5>
                 <a href="#" class="text-muted counter" >${postsArr[4].subtitle}</a>
                 <p class="anchor">
-                    <a href="#" data-placement="top" data-toggle="popover"
-                    data-popover-content="#popover-componentUser" data-trigger="hover" >${postsArr[4].name}</a>
+                    <a href="#"data-id-post="${postsArr[4].id}" data-popover-type="name" data-placement="top" data-toggle="popover" data-trigger="hover" >${postsArr[4].name}</a>
                     in
-                    <a href="#" >${postsArr[4].company}</a>
+                    <a href="#" data-id-post="${postsArr[4].id}" data-popover-type="company" data-placement="bottom" data-toggle="popover" data-trigger="hover">${postsArr[4].company}</a>
                 </p>
                 
                 <p class="text-muted d-flex justify-content-between">
-                    <span>${timeConverter(postsArr[4].created)} &CenterDot; 
-                        <span> ${randomRead()} min read</span> 
+                    <span >${timeConverter(postsArr[4].created)} &CenterDot; 
+                        <span > ${randomRead()} min read</span> 
                     &starf;</span>
                     <span>
                         <svg width="25" height="25">
@@ -191,7 +190,7 @@ const printRightPost = () => {
 }
 
 const infiniteScroll = () => {
-    $.each(postsArr, function (index, post) {
+    $.each(postsArr, function(index, post) {
         $('#general-cards').append(`
             <div class="row pt-5">
                 <div class="col-8 col-md-9 text-card-section">
@@ -201,10 +200,9 @@ const infiniteScroll = () => {
                     <div class="row">
                         <div class="col-6">
                             <div class="anchor">
-                            <a href="#" data-placement="top" data-toggle="popover"
-                            data-popover-content="#popover-componentUser" data-trigger="hover">${post.name}</a>
+                            <a href="#"data-id-post="${post.id}" data-popover-type="name" data-placement="top" data-toggle="popover" data-trigger="hover">${post.name}</a>
                                 in
-                            <a href="#">${post.company}</a>
+                            <a href="#"data-id-post="${post.id}" data-popover-type="company" data-placement="bottom" data-toggle="popover" data-trigger="hover">${post.company}</a>
                             </div>
                             <span class="text-muted">${timeConverter(post.created)}</span>
                         </div>
@@ -235,7 +233,7 @@ const infiniteScroll = () => {
 }
 
 const printPopularPost = () => {
-    $.each(sortPopularPost(), function (idx, post) {
+    $.each(sortPopularPost(), function(idx, post) {
         idx++;
         $('[data-post-id="popularonmedium"]').append(`
             <div class="post-body">
@@ -246,10 +244,9 @@ const printPopularPost = () => {
                     <div class="col-9 col-sm-10 col-lg-9">
                         <h5 onclick="modalCards('${post.id}')" data-toggle="modal" data-target="#modalCards" class="cursor-hand">${post.title}</h5>
                         <p class="anchor">
-                            <a href="#" data-placement="top" data-toggle="popover"
-                            data-popover-content="#popover-componentUser" data-trigger="hover">${post.name}</a>
+                            <a href="#"data-id-post="${post.id}" data-popover-type="name" data-placement="top" data-toggle="popover" data-trigger="hover">${post.name}</a>
                             in
-                            <a href="#">${post.company}</a>
+                            <a href="#"data-id-post="${post.id}" data-popover-type="company" data-placement="bottom" data-toggle="popover" data-trigger="hover">${post.company}</a>
                         </p>
                         <p class="text-muted d-flex justify-content-between">
                         <span>${timeConverter(post.created)} &CenterDot; 5 min read &starf;</span>
@@ -263,14 +260,14 @@ const printPopularPost = () => {
 
 const sortPopularPost = () => {
 
-    postsArr.sort(function (a, b) {
+    postsArr.sort(function(a, b) {
         return a.popular - b.popular;
     });
     return postsArr.reverse().splice(0, 4);
 }
 
 const modalCards = idCard => {
-    $.get(`https://challenge-medium.firebaseio.com/posts/data/${idCard}/.json`, function (data) {
+    $.get(`https://challenge-medium.firebaseio.com/posts/data/${idCard}/.json`, function(data) {
         $('.modal-body img').attr("src", data.image);
         $('#modalCardsLabel').text(data.title)
         $('.modal-body .anchor').text(data.subtitle)
@@ -302,10 +299,9 @@ const scrollToLeft = () => {
 }
 
 const callPopover = () => {
-    $('[data-toggle="tooltip"]').tooltip();
     $('[data-toggle="popover"]').popover({
         html: true,
-        content: function () {
+        content: function() {
             let idPost = $(this).data('id-post');
             let popoverType = $(this).data('popover-type');
             let titlePopover = popoverType == 'name' ? posts[idPost].name : posts[idPost].company;
@@ -336,7 +332,7 @@ window.addEventListener("scroll", (event => {
 }))
 
 
-$('.card-body-closed').click(function () {
+$('.card-body-closed').click(function() {
     $(this).closest('#card-learn').remove();
 })
 
