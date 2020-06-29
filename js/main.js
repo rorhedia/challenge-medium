@@ -296,15 +296,15 @@ const randomRead = () => {
 }
 
 const scrollRight = () => {
-    $(".horizontal-contenedor").animate({ scrollLeft: "1366px" }, 3000)
+    $(".horizontal-contenedor").animate({ scrollLeft: "+=100" }, 1000)
 }
 
 const scrollToLeft = () => {
-    $(".horizontal-contenedor").animate({ scrollLeft: "0px" }, 3000)
+    $(".horizontal-contenedor").animate({ scrollLeft: "-=100" }, 1000)
 }
 
 const callPopover = () => {
-    for (let i = 0; i <= 50; i++) {
+    for (let i = 0; i <= 100; i++) {
         $('[data-toggle="tooltip"]').tooltip();
         $('[data-toggle="popover"]').popover({
             html: true,
