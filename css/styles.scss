@@ -45,14 +45,19 @@ svg {
     background: white;
     &.left {
         position: absolute;
-        top: 26px;
+        top: 12px;
         left: -4px;
     }
     &.right {
         position: absolute;
-        top: 26px;
+        top: 12px;
         right: -1px;
     }
+}
+
+.modal-img-size{
+    object-fit: cover;
+    max-height: 300px;
 }
 
 .horizontal-contenedor {
@@ -214,6 +219,7 @@ svg {
     position: sticky;
     z-index: 1;
     top: 0;
+    max-height: 45px;
 }
 
 .nav-header {
@@ -265,7 +271,7 @@ svg {
 
 .popular-on-medium {
     position: sticky;
-    top: -10px;
+    top: 52px;
     .nav-popular {
         a {
             color: $color-muted;

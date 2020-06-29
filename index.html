@@ -46,9 +46,33 @@
 
     <!-- Navbar -->
     <div class="container-fluid parent-nav-sticky bg-white">
-        <div class="row">
-            <div class="col-10 offset-1">
-                <div class="my-3 ">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="mr-2 cursor-hand nav-control left" onclick="scrollToLeft()">
+                    &LeftAngleBracket;
+                </div>
+                <ul class="list-scroll horizontal-contenedor">
+                    <li><a href="# ">HOME</a></li>
+                    <li><a href="#">POPULAR</a></li>
+                    <li><a href="# ">MOMENTUM</a></li>
+                    <li><a href="#">CORONAVIRUS</a></li>
+                    <li><a href="# ">ONEZERO</a></li>
+                    <li><a href="#">ELEMENTAL</a></li>
+                    <li><a href="# ">GEN</a></li>
+                    <li><a href="#">ZORA</a></li>
+                    <li><a href="# ">FORGE</a></li>
+                    <li><a href="#">HUMAN PARTS</a></li>
+                    <li><a href="# ">MARKER</a></li>
+                    <li><a href="#">LEVEL</a></li>
+                    <li><a href="#">HEATED</a></li>
+                    <li><a href="#">MORE</a></li>
+                </ul>
+                <div class="ml-2 cursor-hand nav-control right" onclick="scrollRight()">
+                    &RightAngleBracket;
+                </div>
+            </div>
+            <!-- <div class="col-10 offset-1">
+                <div class="my-1">
                     <div class="horizontal-contenedor px-1 ">
                         <div class="row">
                             <div class="mr-2 cursor-hand nav-control left " onclick="scrollToLeft()">&LeftAngleBracket;
@@ -74,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -91,10 +115,14 @@
                 </div>
                 <div class="modal-body">
                     <!--Imagen-->
-                    <img class="w-100" src="" alt="img">
-
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            <img class="w-100 modal-img-size" src="" alt="img">
+                        </div>
+                    </div>
+                    
                     <!--Subtitulo-->
-                    <p class="anchor"></p>
+                    <p class="anchor p-1"></p>
 
                     <!--Parrafo-->
                     <p class="parrafo"></p>
@@ -120,7 +148,7 @@
 
     <!-- Popover name -->
     <div id="popover-componentUser" class="d-none">
-        <div class="card popover-body" style="width: 18rem;">
+        <!-- <div class="card popover-body" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-name popover-name text-dark font-weight-bolder"></h5>
                 <p class="card-tex text-muted ">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -130,7 +158,7 @@
                     <div class="btn btn border-success text-success align-items-center ">Follow</div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- Popover company -->
@@ -189,7 +217,7 @@
             <div class="col-12 col-lg-4">
 
                 <!-- Aside -->
-                <aside class="mt-5 mt-md-0 d-none d-lg-block">
+                <!-- <aside class="mt-5 mt-md-0 d-none d-lg-block">
                     <div class="d-flex flex-row justify-content-between align-items-end network-color">
                         <h4>New from your network</h4>
                         <img src="https://cdn-images-1.medium.com/proxy/1*K3oqw1Ed_6VMaql4HojuDg.png" alt="img1">
@@ -243,7 +271,7 @@
                             </div>
                         </div>
                     </div>
-                </aside>
+                </aside> -->
 
                 <div class="popular-on-medium mt-3">
                     <!-- title -->

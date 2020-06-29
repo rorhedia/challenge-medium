@@ -1,4 +1,5 @@
-var postsArr = [];
+var postsArr = [],
+    posts = [];
 
 // Creación del objeto que será enviado al endpoint
 const setObjPost = () => {
@@ -6,13 +7,12 @@ const setObjPost = () => {
         created = Math.floor(Date.now() / 1000),
         userObj = {},
         data = {};
-    $.each(form, function(idx, value) {
+    $.each(form, function (idx, value) {
         userObj[value.name] = value.value;
     })
     userObj["created"] = created;
     ajax("POST", userSuccess, userObj);
 }
-
 
 const ajax = (method, callback, request = {}) => {
     let urlEndpoint = 'https://challenge-medium.firebaseio.com/posts/data/';
@@ -35,7 +35,7 @@ const ajax = (method, callback, request = {}) => {
         url: urlEndpoint,
         method: method,
         data: JSON.stringify(request)
-    }).done(function(response, status) {
+    }).done(function (response, status) {
         if (status == 'success' && response !== null) {
             callback(response);
         }
@@ -43,10 +43,11 @@ const ajax = (method, callback, request = {}) => {
 }
 
 const setDataArr = response => {
-    $.each(response, function(key, value) {
+    $.each(response, function (key, value) {
         value["id"] = key
         postsArr.push(value)
     })
+    posts = response
     postsArr.reverse()
     printCards()
 }
@@ -78,11 +79,9 @@ const printLeftPost = () => {
                 <h5 onclick="modalCards('${postsArr[0].id}')" data-toggle="modal" data-target="#modalCards" class="cursor-hand counter">${postsArr[0].title}</h5>
                 <a href="#" class="text-muted counter">${postsArr[0].subtitle}</a>
                 <p class="anchor ">
-                    <a href="#" data-placement="top" data-toggle="popover"
-                    data-popover-content="#popover-componentUser" data-trigger="hover"> ${postsArr[0].name}</a>
+                    <a href="#" data-id-post="${postsArr[0].id}" data-popover-type="name" data-placement="top" data-toggle="popover" data-trigger="hover"> ${postsArr[0].name}</a>
                     in
-                    <a href="#" data-placement="top" data-toggle="popover"
-                    data-popover-content="#popover-company" data-trigger="hover" >${postsArr[0].company}</a>                      
+                    <a href="#" data-id-post="${postsArr[0].id}" data-popover-type="company" data-placement="bottom" data-toggle="popover" data-trigger="hover" >${postsArr[0].company}</a>                      
                 </p>
                 <p class="text-muted d-flex justify-content-between">
                     <span>${timeConverter(postsArr[0].created)} &CenterDot; 
@@ -119,10 +118,9 @@ const printCenterPost = () => {
                         <p><a href="#" class="cursor-hand text-muted">${postsArr[i].subtitle}</a></p>
                         <div class="row">
                             <div class="col-10 author">
-                                <a href="#" data-placement="top" data-toggle="popover"
-                                data-popover-content="#popover-componentUser" data-trigger="hover">${postsArr[i].name}</a>
+                                <a href="#" data-id-post="${postsArr[i].id}" data-popover-type="name" data-placement="top" data-toggle="popover" data-trigger="hover">${postsArr[i].name}</a>
                                 <span>in</span>
-                                <a href="#">${postsArr[i].company}</a>
+                                <a href="#" data-id-post="${postsArr[i].id}" data-popover-type="company" data-placement="bottom" data-toggle="popover" data-trigger="hover">${postsArr[i].company}</a>
 
                                 <p>${timeConverter(postsArr[i].created)}
                                     <svg class="bi bi-dot" width="1em" height="1em" viewBox="0 0 16 16"
@@ -193,7 +191,7 @@ const printRightPost = () => {
 }
 
 const infiniteScroll = () => {
-    $.each(postsArr, function(index, post) {
+    $.each(postsArr, function (index, post) {
         $('#general-cards').append(`
             <div class="row pt-5">
                 <div class="col-8 col-md-9 text-card-section">
@@ -237,7 +235,7 @@ const infiniteScroll = () => {
 }
 
 const printPopularPost = () => {
-    $.each(sortPopularPost(), function(idx, post) {
+    $.each(sortPopularPost(), function (idx, post) {
         idx++;
         $('[data-post-id="popularonmedium"]').append(`
             <div class="post-body">
@@ -265,14 +263,14 @@ const printPopularPost = () => {
 
 const sortPopularPost = () => {
 
-    postsArr.sort(function(a, b) {
+    postsArr.sort(function (a, b) {
         return a.popular - b.popular;
     });
     return postsArr.reverse().splice(0, 4);
 }
 
 const modalCards = idCard => {
-    $.get(`https://challenge-medium.firebaseio.com/posts/data/${idCard}/.json`, function(data) {
+    $.get(`https://challenge-medium.firebaseio.com/posts/data/${idCard}/.json`, function (data) {
         $('.modal-body img').attr("src", data.image);
         $('#modalCardsLabel').text(data.title)
         $('.modal-body .anchor').text(data.subtitle)
@@ -304,16 +302,18 @@ const scrollToLeft = () => {
 }
 
 const callPopover = () => {
-    for (let i = 0; i <= 100; i++) {
-        $('[data-toggle="tooltip"]').tooltip();
-        $('[data-toggle="popover"]').popover({
-            html: true,
-            content: function() {
-                let popover = `
+    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="popover"]').popover({
+        html: true,
+        content: function () {
+            let idPost = $(this).data('id-post');
+            let popoverType = $(this).data('popover-type');
+            let titlePopover = popoverType == 'name' ? posts[idPost].name : posts[idPost].company;
+            let popover = `
                 <div class="card popover-body" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-name popover-name text-dark font-weight-bolder">${postsArr[i].name}</h5>
-                        <p class="card-tex text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <h5 class="card-name popover-name text-dark font-weight-bolder">${titlePopover}</h5>
+                        <p class="card-tex text-muted">${posts[idPost].subtitle}</p>
                         <hr>
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="m-0">Followed by1.2K people</p>
@@ -322,34 +322,9 @@ const callPopover = () => {
                     </div>
                 </div>
             `
-                return popover
-            },
-        });
-    }
-}
-
-const callPopoverCompany = () => {
-    for (let i = 0; i <= 50; i++) {
-        $('[data-toggle="tooltip"]').tooltip();
-        $('[data-toggle="popover"]').popover({
-            html: true,
-            content: function() {
-                let popover = `
-                    <div class="card popover-body" style="width: 18rem;">
-                    <div class="card-body company">
-                        <h5 class="card-company popover-company text-dark font-weight-bolder">${postsArr[i].company}</h5>
-                        <hr>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="m-0">Followed by1.2K people</p>
-                            <div class="btn btn border-success text-success align-items-center ">Follow</div>
-                        </div>
-                    </div>
-                </div>
-            `
-                return popover
-            },
-        });
-    }
+            return popover;
+        },
+    });
 }
 
 window.addEventListener("scroll", (event => {
@@ -361,7 +336,7 @@ window.addEventListener("scroll", (event => {
 }))
 
 
-$('.card-body-closed').click(function() {
+$('.card-body-closed').click(function () {
     $(this).closest('#card-learn').remove();
 })
 
