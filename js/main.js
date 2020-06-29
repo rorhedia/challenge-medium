@@ -63,6 +63,8 @@ const printCards = () => {
     printRightPost()
     infiniteScroll()
     printPopularPost()
+    callPopover()
+    callPopoverCompany()
 }
 
 const printLeftPost = () => {
@@ -75,10 +77,12 @@ const printLeftPost = () => {
             <div class="mt-2 col-9 col-sm-12 offset-lg-3 col-lg-9 p-0">
                 <h5 onclick="modalCards('${postsArr[0].id}')" data-toggle="modal" data-target="#modalCards" class="cursor-hand counter">${postsArr[0].title}</h5>
                 <a href="#" class="text-muted counter">${postsArr[0].subtitle}</a>
-                <p class="anchor">
-                    <a href="#">${postsArr[0].name}</a>
+                <p class="anchor ">
+                    <a href="#" data-placement="top" data-toggle="popover"
+                    data-popover-content="#popover-componentUser" data-trigger="hover"> ${postsArr[0].name}</a>
                     in
-                    <a href="#">${postsArr[0].company}</a>                      
+                    <a href="#" data-placement="top" data-toggle="popover"
+                    data-popover-content="#popover-company" data-trigger="hover" >${postsArr[0].company}</a>                      
                 </p>
                 <p class="text-muted d-flex justify-content-between">
                     <span>${timeConverter(postsArr[0].created)} &CenterDot; 
@@ -115,7 +119,8 @@ const printCenterPost = () => {
                         <p><a href="#" class="cursor-hand text-muted">${postsArr[i].subtitle}</a></p>
                         <div class="row">
                             <div class="col-10 author">
-                                <a href="#">${postsArr[i].name}</a>
+                                <a href="#" data-placement="top" data-toggle="popover"
+                                data-popover-content="#popover-componentUser" data-trigger="hover">${postsArr[i].name}</a>
                                 <span>in</span>
                                 <a href="#">${postsArr[i].company}</a>
 
@@ -164,7 +169,8 @@ const printRightPost = () => {
                 <h5 class="cursor-hand mb-3" onclick="modalCards('${postsArr[4].id}')" data-toggle="modal" data-target="#modalCards">${postsArr[4].title}</h5>
                 <a href="#" class="text-muted counter" >${postsArr[4].subtitle}</a>
                 <p class="anchor">
-                    <a href="#" >${postsArr[4].name}</a>
+                    <a href="#" data-placement="top" data-toggle="popover"
+                    data-popover-content="#popover-componentUser" data-trigger="hover" >${postsArr[4].name}</a>
                     in
                     <a href="#" >${postsArr[4].company}</a>
                 </p>
@@ -197,7 +203,8 @@ const infiniteScroll = () => {
                     <div class="row">
                         <div class="col-6">
                             <div class="anchor">
-                            <a href="#">${post.name}</a>
+                            <a href="#" data-placement="top" data-toggle="popover"
+                            data-popover-content="#popover-componentUser" data-trigger="hover">${post.name}</a>
                                 in
                             <a href="#">${post.company}</a>
                             </div>
@@ -241,7 +248,8 @@ const printPopularPost = () => {
                     <div class="col-9 col-sm-10 col-lg-9">
                         <h5 onclick="modalCards('${post.id}')" data-toggle="modal" data-target="#modalCards" class="cursor-hand">${post.title}</h5>
                         <p class="anchor">
-                            <a href="#">${post.name}</a>
+                            <a href="#" data-placement="top" data-toggle="popover"
+                            data-popover-content="#popover-componentUser" data-trigger="hover">${post.name}</a>
                             in
                             <a href="#">${post.company}</a>
                         </p>
@@ -295,6 +303,67 @@ const scrollToLeft = () => {
     $(".horizontal-contenedor").animate({ scrollLeft: "0px" }, 3000)
 }
 
+const callPopover = () => {
+    for (let i = 0; i <= 50; i++) {
+        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="popover"]').popover({
+            html: true,
+            content: function() {
+                let popover = `
+                <div class="card popover-body" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-name popover-name text-dark font-weight-bolder">${postsArr[i].name}</h5>
+                        <p class="card-tex text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="m-0">Followed by1.2K people</p>
+                            <div class="btn btn border-success text-success align-items-center ">Follow</div>
+                        </div>
+                    </div>
+                </div>
+            `
+                return popover
+            },
+        });
+    }
+}
+
+const callPopoverCompany = () => {
+    for (let i = 0; i <= 50; i++) {
+        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="popover"]').popover({
+            html: true,
+            content: function() {
+                let popover = `
+                    <div class="card popover-body" style="width: 18rem;">
+                    <div class="card-body company">
+                        <h5 class="card-company popover-company text-dark font-weight-bolder">${postsArr[i].company}</h5>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="m-0">Followed by1.2K people</p>
+                            <div class="btn btn border-success text-success align-items-center ">Follow</div>
+                        </div>
+                    </div>
+                </div>
+            `
+                return popover
+            },
+        });
+    }
+}
+
+window.addEventListener("scroll", (event => {
+    if ($(window).scrollTop() > $(document).height() - $(window).height() - 200) {
+        setTimeout(() => {
+            ajax("GET", infiniteScroll);
+        }, 700)
+    }
+}))
+
+
+$('.card-body-closed').click(function() {
+    $(this).closest('#card-learn').remove();
+})
 
 ajax("GET", setDataArr)
 
