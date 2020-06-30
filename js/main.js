@@ -24,10 +24,9 @@ const ajax = (method, callback, request = {}) => {
     } else if (method == 'DELETE') {
         urlEndpoint = `${request}/.json`;
     } else if (method == 'PATCH') {
-        urlEndpoint = `${request.id}/.json`;
-        let counter = parseInt(request.counter) + 1;
-        request = { popular: counter };
-        // console.log(request);
+        urlEndpoint += `${request.id}/.json`;
+        popular = request.popular
+        // console.log(popular);
         // return
     }
 
@@ -59,13 +58,13 @@ const userSuccess = data => {
 }
 
 const printCards = () => {
-    printLeftPost()
-    printCenterPost()
-    printRightPost()
-    infiniteScroll()
-    printPopularPost()
-    callPopover()
-    callPopoverCompany()
+    printLeftPost();
+    printCenterPost();
+    printRightPost();
+    infiniteScroll();
+    printPopularPost();
+    callPopover();
+    countViews();
 }
 
 const printLeftPost = () => {
@@ -74,9 +73,9 @@ const printLeftPost = () => {
             <h5>Publication muted</h5>
         </div>
         <div class="post-body">
-            <img onclick="modalCards('${postsArr[0].id}')" data-toggle="modal" data-target="#modalCards"  class="size-custome cursor-hand w-100 counter" src="${postsArr[0].image}" alt="img">
-            <div class="mt-2 col-9 col-sm-12 offset-lg-3 col-lg-9 p-0">
-                <h5 onclick="modalCards('${postsArr[0].id}')" data-toggle="modal" data-target="#modalCards" class="cursor-hand counter">${postsArr[0].title}</h5>
+            <img onclick="modalCards('${postsArr[0].id}')" data-id-post="${postsArr[0].id}" data-popular="${postsArr[0].popular}" data-toggle="modal" data-target="#modalCards"  class="size-custome cursor-hand w-100 counter" src="${postsArr[0].image}" alt="img">
+            <div class="mt-2 col-9 col-sm-12 offset-lg-3 col-lg-9 p-0 counter">
+                <h5 onclick="modalCards('${postsArr[0].id}')" data-id-post="${postsArr[0].id}" data-popular="${postsArr[0].popular}" data-toggle="modal" data-target="#modalCards" class="cursor-hand counter">${postsArr[0].title}</h5>
                 <a href="#" class="text-muted counter">${postsArr[0].subtitle}</a>
                 <p class="anchor ">
                     <a href="#" data-id-post="${postsArr[0].id}" data-popover-type="name" data-placement="top" data-toggle="popover" data-trigger="hover"> ${postsArr[0].name}</a>
@@ -110,11 +109,11 @@ const printCenterPost = () => {
             <div class="post-body">
                 <div class="row mb-2">
                     <div class="col-4 w-100 order-1 order-md-0">
-                        <img onclick="modalCards('${postsArr[i].id}')" data-toggle="modal" data-target="#modalCards" class="center-img-cards cursor-hand counter" src="${postsArr[i].image}" alt="image">
+                        <img onclick="modalCards('${postsArr[i].id}')" data-id-post="${postsArr[i].id}" data-popular="${postsArr[i].popular}" data-toggle="modal" data-target="#modalCards" class="center-img-cards cursor-hand counter" src="${postsArr[i].image}" alt="image">
                     </div>
                     <div class="col-8 order-0">
                     
-                        <h5 href="#" onclick="modalCards('${postsArr[i].id}')" data-toggle="modal" data-target="#modalCards" class="counter cursor-hand mb-3">${postsArr[i].title}</h5>
+                        <h5 href="#" onclick="modalCards('${postsArr[i].id}')" data-id-post="${postsArr[i].id}" data-popular="${postsArr[i].popular}" data-toggle="modal" data-target="#modalCards" class="counter cursor-hand mb-3">${postsArr[i].title}</h5>
                         <p><a href="#" class="cursor-hand text-muted">${postsArr[i].subtitle}</a></p>
                         <div class="row">
                             <div class="col-10 author">
@@ -161,10 +160,10 @@ const printRightPost = () => {
             <h5>Publication muted</h5>
         </div>
         <div class="post-body">
-                <img onclick="modalCards('${postsArr[4].id}')" data-toggle="modal" data-target="#modalCards" class="size-custome cursor-hand w-100" src="${postsArr[4].image}" alt="img">
+                <img onclick="modalCards('${postsArr[4].id}')" data-id-post="${postsArr[4].id}" data-popular="${postsArr[4].popular}" data-toggle="modal" data-target="#modalCards" class="size-custome cursor-hand w-100 counter" src="${postsArr[4].image}" alt="img">
             <div>
                 
-                <h5 class="cursor-hand mb-3" onclick="modalCards('${postsArr[4].id}')" data-toggle="modal" data-target="#modalCards">${postsArr[4].title}</h5>
+                <h5 class="cursor-hand mb-3 counter" onclick="modalCards('${postsArr[4].id}')" data-id-post="${postsArr[4].id}" data-popular="${postsArr[4].popular}" data-toggle="modal" data-target="#modalCards">${postsArr[4].title}</h5>
                 <a href="#" class="text-muted counter" >${postsArr[4].subtitle}</a>
                 <p class="anchor">
                     <a href="#"data-id-post="${postsArr[4].id}" data-popover-type="name" data-placement="top" data-toggle="popover" data-trigger="hover" >${postsArr[4].name}</a>
@@ -195,7 +194,7 @@ const infiniteScroll = () => {
             <div class="row pt-5">
                 <div class="col-8 col-md-9 text-card-section">
                     <p class="text-muted mb-1">BASED ON YOUR READING HISTORY</p>                    
-                    <h5 href="#" class="cursor-hand font-weight-bold mb-1"onclick="modalCards('${post.id}')" data-toggle="modal" data-target="#modalCards">${post.title}</h5>
+                    <h5 href="#" class="cursor-hand font-weight-bold mb-1 counter" onclick="modalCards('${post.id}')" data-id-post="${post.id}" data-popular="${post.popular}" data-toggle="modal" data-target="#modalCards">${post.title}</h5>
                     <p class="cursor-hand text-muted">${post.subtitle}</p>
                     <div class="row">
                         <div class="col-6">
@@ -225,7 +224,7 @@ const infiniteScroll = () => {
                     </div>
                 </div>
                 <div class="col-4 col-md-3">
-                    <img onclick="modalCards('${post.id}')" data-toggle="modal" data-target="#modalCards"  class="infinte-card cursor-hand" src="${post.image}" alt="img1" >
+                    <img onclick="modalCards('${post.id}')" data-id-post="${post.id}" data-popular="${post.popular}" data-toggle="modal" data-target="#modalCards"  class="infinte-card cursor-hand counter" src="${post.image}" alt="img1" >
                 </div>
             </div>
         `)
@@ -242,7 +241,7 @@ const printPopularPost = () => {
                         <h2 class="text-muted text-right">0${idx}</h2>
                     </div>
                     <div class="col-9 col-sm-10 col-lg-9">
-                        <h5 onclick="modalCards('${post.id}')" data-toggle="modal" data-target="#modalCards" class="cursor-hand">${post.title}</h5>
+                        <h5 onclick="modalCards('${post.id}')" data-id-post="${post.id}" data-toggle="modal" data-target="#modalCards" class="cursor-hand counter">${post.title}</h5>
                         <p class="anchor">
                             <a href="#"data-id-post="${post.id}" data-popover-type="name" data-placement="top" data-toggle="popover" data-trigger="hover">${post.name}</a>
                             in
@@ -259,7 +258,6 @@ const printPopularPost = () => {
 }
 
 const sortPopularPost = () => {
-
     postsArr.sort(function(a, b) {
         return a.popular - b.popular;
     });
@@ -331,6 +329,22 @@ window.addEventListener("scroll", (event => {
     }
 }))
 
+const countViews = () => {
+    $('.counter').click(function() {
+        let id = $(this).data('id-post');
+        let popular = $(this).data('popular');
+        popular = popular+1
+        let request = {
+            id: id,
+            popular: popular
+        }
+        ajax('PATCH',exito, request)
+    });
+}
+
+const exito = () => {
+    console.log('ok');
+}
 
 $('.card-body-closed').click(function() {
     $(this).closest('#card-learn').remove();
