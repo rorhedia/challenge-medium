@@ -342,8 +342,8 @@ const countViews = () => {
     });
 }
 
-const exito = () => {
-    console.log('ok');
+const exito = (data) => {
+    console.log(data);
 }
 
 $('.card-body-closed').click(function() {

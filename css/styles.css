@@ -286,8 +286,8 @@ svg {
 .center-img-cards {
   -o-object-fit: cover;
      object-fit: cover;
-  height: 80px;
-  width: 80px;
+  height: 100px;
+  width: 100px;
 }
 
 @media (min-width: 960px) {
@@ -302,8 +302,17 @@ svg {
 .infinte-card {
   -o-object-fit: cover;
      object-fit: cover;
-  width: 110px;
-  height: 110px;
+  width: 100px;
+  height: 100px;
+}
+
+@media (min-width: 960px) {
+  .infinte-card {
+    -o-object-fit: cover;
+       object-fit: cover;
+    height: 110px;
+    width: 110px;
+  }
 }
 
 .popular-on-medium {
