@@ -353,3 +353,29 @@ $('.card-body-closed').click(function() {
 ajax("GET", setDataArr)
 
 $('#save-post').on('click', setObjPost)
+
+$('#create-post').on('click', function (){
+    let form = $("#upgrade-medium").serializeArray(),
+        userObj = {},
+        data = {};
+
+    $.each(form, function(idx, value) {
+        userObj[value.name] = value.value;
+    })
+    console.log (userObj)
+    var settings = {
+        "url": "localhost:8081/entries",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMWEyNmU2ODkzZmI0MjMwYzY1MTZmZCIsImlhdCI6MTU5NTU1MDcxNCwiZXhwIjoxNTk1NzIzNTE0fQ.srmshsUzGBSgNbQDxxNRMtEIxdyWcJXeV2HmAmXZ-So",
+          "Content-Type": "application/json"
+        },
+        "data": JSON.stringify(userObj),
+      };
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+      });
+})
+

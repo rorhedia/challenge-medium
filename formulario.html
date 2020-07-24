@@ -39,40 +39,36 @@
                 <h1 id="font-title" class="text-dark mt-4 mt-md-4">Unlimited access for the insatiably curious</h1>
 
                 <form id="upgrade-medium" class=" p-4 mt-1 mt-md-5 bg-white">
-                    <input type="hidden" id="popular" name="popular" value='0' />
+                    <!--<input type="hidden" id="popular" name="popular" value='0' />-->
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="name">Nombre</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" />
+                            <input type="text" class="form-control" id="name" name="author" placeholder="Name" />
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="company">Compañia</label>
-                            <input type="text" class="form-control" id="company" name="company" placeholder="Company" />
+                            <label for="company">Sección</label>
+                            <input type="text" class="form-control" id="company" name="section" placeholder="section" />
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-12">
                             <label for="title">Título</label>
                             <input type="text" class="form-control" id="title" name="title" placeholder="Article Title" />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="subtitle">Subtitulo</label>
-                            <input type="text" class="form-control" name="subtitle" id="subtitle" placeholder="subtitle">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="image">Imagen</label>
-                            <input type="text" class="form-control" id="image" name="image" placeholder="https://img.photo.com/1" />
+                            <input type="text" class="form-control" id="image" name="urlimg" placeholder="https://img.photo.com/1" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="paragraph">Paragraph</label>
-                        <textarea class="form-control" id="paragraph" name="paragraph" placeholder="Type about your article"></textarea>
+                        <textarea class="form-control" id="paragraph" name="content" placeholder="Type about your article"></textarea>
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <button type="button" id="save-post" class="btn btn-outline-info border-info w-50 mr-1">Save
+                        <button type="button" id="create-post" class="btn btn-outline-info border-info w-50 mr-1">Save
                             your Article</button>
                         <a href="index.html" class="btn btn-outline-warning w-50 border-warning ml-1">Return</a>
                     </div>
