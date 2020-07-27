@@ -1,74 +1,74 @@
 var postsArr = [],
-    posts = [];
+	posts    = [];
 
 // Creación del objeto que será enviado al endpoint
 const setObjPost = () => {
-    let form = $("#upgrade-medium").serializeArray(),
-        created = Math.floor(Date.now() / 1000),
-        userObj = {},
-        data = {};
-    $.each(form, function(idx, value) {
-        userObj[value.name] = value.value;
-    })
-    userObj["created"] = created;
-    ajax("POST", userSuccess, userObj);
+	let form    = $("#upgrade-medium").serializeArray(),
+		created = Math.floor(Date.now() / 1000),
+		userObj = {},
+		data    = {};
+	$.each(form, function (idx, value) {
+		userObj[value.name] = value.value;
+	})
+	userObj["created"] = created;
+	ajax("POST", userSuccess, userObj);
 }
 
 const ajax = (method, callback, request = {}) => {
-    let urlEndpoint = 'https://challenge-medium.firebaseio.com/posts/data/';
+	let urlEndpoint = 'https://challenge-medium.firebaseio.com/posts/data/';
 
-    if (method == 'GET') {
-        urlEndpoint += '.json';
-    } else if (method == 'POST') {
-        urlEndpoint += '.json';
-    } else if (method == 'DELETE') {
-        urlEndpoint = `${request}/.json`;
-    } else if (method == 'PATCH') {
-        urlEndpoint += `${request.id}/.json`;
-        popular = request.popular
-        // console.log(popular);
-        // return
-    }
+	if (method == 'GET') {
+		urlEndpoint += '.json';
+	} else if (method == 'POST') {
+		urlEndpoint += '.json';
+	} else if (method == 'DELETE') {
+		urlEndpoint = `${request}/.json`;
+	} else if (method == 'PATCH') {
+		urlEndpoint += `${request.id}/.json`;
+		popular = request.popular
+		// console.log(popular);
+		// return
+	}
 
-    $.ajax({
-        url: urlEndpoint,
-        method: method,
-        data: JSON.stringify(request)
-    }).done(function(response, status) {
-        if (status == 'success' && response !== null) {
-            callback(response);
-        }
-    });
+	$.ajax({
+		url   : urlEndpoint,
+		method: method,
+		data  : JSON.stringify(request)
+	}).done(function (response, status) {
+		if (status == 'success' && response !== null) {
+			callback(response);
+		}
+	});
 }
 
 const setDataArr = response => {
-    $.each(response, function(key, value) {
-        value["id"] = key
-        postsArr.push(value)
-    })
-    posts = response
-    postsArr.reverse()
-    printCards()
+	$.each(response, function (key, value) {
+		value["id"] = key
+		postsArr.push(value)
+	})
+	posts = response
+	postsArr.reverse()
+	printCards()
 }
 
 // Función que alerta que el post se creó correctamente
 const userSuccess = data => {
-    $('#upgrade-medium').trigger("reset");
-    console.log(data);
+	$('#upgrade-medium').trigger("reset");
+	console.log(data);
 }
 
 const printCards = () => {
-    printLeftPost();
-    printCenterPost();
-    printRightPost();
-    infiniteScroll();
-    printPopularPost();
-    callPopover();
-    countViews();
+	printLeftPost();
+	printCenterPost();
+	printRightPost();
+	infiniteScroll();
+	printPopularPost();
+	callPopover();
+	countViews();
 }
 
 const printLeftPost = () => {
-    $('[data-post-id="rs1"]').append(`
+	$('[data-post-id="rs1"]').append(`
         <div class="card-post-hide w-100 h-100 d-none">
             <h5>Publication muted</h5>
         </div>
@@ -101,8 +101,8 @@ const printLeftPost = () => {
 }
 
 const printCenterPost = () => {
-    for (let i = 1; i <= 3; i++) {
-        $('[data-post-id="rs2"]').append(`
+	for (let i = 1; i <= 3; i++) {
+		$('[data-post-id="rs2"]').append(`
             <div class="card-post-hide w-100 h-100 d-none">
                 <h5>Publication muted</h5>
             </div>
@@ -151,11 +151,11 @@ const printCenterPost = () => {
                 </div>
             </div>
         `);
-    }
+	}
 }
 
 const printRightPost = () => {
-    $('[data-post-id="rs3"]').append(`
+	$('[data-post-id="rs3"]').append(`
         <div class="card-post-hide w-100 h-100 d-none">
             <h5>Publication muted</h5>
         </div>
@@ -189,8 +189,8 @@ const printRightPost = () => {
 }
 
 const infiniteScroll = () => {
-    $.each(postsArr, function(index, post) {
-        $('#general-cards').append(`
+	$.each(postsArr, function (index, post) {
+		$('#general-cards').append(`
             <div class="row pt-5">
                 <div class="col-8 col-md-9 text-card-section">
                     <p class="text-muted mb-1">BASED ON YOUR READING HISTORY</p>                    
@@ -228,13 +228,13 @@ const infiniteScroll = () => {
                 </div>
             </div>
         `)
-    })
+	})
 }
 
 const printPopularPost = () => {
-    $.each(sortPopularPost(), function(idx, post) {
-        idx++;
-        $('[data-post-id="popularonmedium"]').append(`
+	$.each(sortPopularPost(), function (idx, post) {
+		idx++;
+		$('[data-post-id="popularonmedium"]').append(`
             <div class="post-body">
                 <div class="row pb-3">
                     <div class="col-3 col-sm-1 col-lg-3">
@@ -254,56 +254,56 @@ const printPopularPost = () => {
                 </div>
             </div>
         `);
-    })
+	})
 }
 
 const sortPopularPost = () => {
-    postsArr.sort(function(a, b) {
-        return a.popular - b.popular;
-    });
-    return postsArr.reverse().splice(0, 4);
+	postsArr.sort(function (a, b) {
+		return a.popular - b.popular;
+	});
+	return postsArr.reverse().splice(0, 4);
 }
 
 const modalCards = idCard => {
-    $.get(`https://challenge-medium.firebaseio.com/posts/data/${idCard}/.json`, function(data) {
-        $('.modal-body img').attr("src", data.image);
-        $('#modalCardsLabel').text(data.title)
-        $('.modal-body .anchor').text(data.subtitle)
-        $('.modal-body .parrafo').text(data.paragraph)
+	$.get(`https://challenge-medium.firebaseio.com/posts/data/${idCard}/.json`, function (data) {
+		$('.modal-body img').attr("src", data.image);
+		$('#modalCardsLabel').text(data.title)
+		$('.modal-body .anchor').text(data.subtitle)
+		$('.modal-body .parrafo').text(data.paragraph)
 
-    })
+	})
 }
 
 const timeConverter = timestamp => {
-    let a = new Date(timestamp * 1000);
-    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    let month = months[a.getMonth()];
-    let date = a.getDate();
-    // let min = a.getMinutes();
+	let a      = new Date(timestamp * 1000);
+	let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	let month  = months[a.getMonth()];
+	let date   = a.getDate();
+	// let min = a.getMinutes();
 
-    return `${month} ${date}`;
+	return `${month} ${date}`;
 }
 
 const randomRead = () => {
-    return Math.floor(Math.random() * 15) + 1;
+	return Math.floor(Math.random() * 15) + 1;
 }
 
 const scrollRight = () => {
-    $(".horizontal-contenedor").animate({ scrollLeft: "+=100" }, 1000)
+	$(".horizontal-contenedor").animate({scrollLeft: "+=100"}, 1000)
 }
 
 const scrollToLeft = () => {
-    $(".horizontal-contenedor").animate({ scrollLeft: "-=100" }, 1000)
+	$(".horizontal-contenedor").animate({scrollLeft: "-=100"}, 1000)
 }
 
 const callPopover = () => {
-    $('[data-toggle="popover"]').popover({
-        html: true,
-        content: function() {
-            let idPost = $(this).data('id-post');
-            let popoverType = $(this).data('popover-type');
-            let titlePopover = popoverType == 'name' ? posts[idPost].name : posts[idPost].company;
-            let popover = `
+	$('[data-toggle="popover"]').popover({
+		html   : true,
+		content: function () {
+			let idPost       = $(this).data('id-post');
+			let popoverType  = $(this).data('popover-type');
+			let titlePopover = popoverType == 'name' ? posts[idPost].name : posts[idPost].company;
+			let popover      = `
                 <div class="card popover-body" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-name popover-name text-dark font-weight-bolder">${titlePopover}</h5>
@@ -316,66 +316,65 @@ const callPopover = () => {
                     </div>
                 </div>
             `
-            return popover;
-        },
-    });
+			return popover;
+		},
+	});
 }
 
 window.addEventListener("scroll", (event => {
-    if ($(window).scrollTop() > $(document).height() - $(window).height() - 200) {
-        setTimeout(() => {
-            ajax("GET", infiniteScroll);
-        }, 700)
-    }
+	if ($(window).scrollTop() > $(document).height() - $(window).height() - 200) {
+		setTimeout(() => {
+			ajax("GET", infiniteScroll);
+		}, 700)
+	}
 }))
 
 const countViews = () => {
-    $('.counter').click(function() {
-        let id = $(this).data('id-post');
-        let popular = $(this).data('popular');
-        popular = popular+1
-        let request = {
-            id: id,
-            popular: popular
-        }
-        ajax('PATCH',exito, request)
-    });
+	$('.counter').click(function () {
+		let id      = $(this).data('id-post');
+		let popular = $(this).data('popular');
+		popular     = popular + 1
+		let request = {
+			id     : id,
+			popular: popular
+		}
+		ajax('PATCH', exito, request)
+	});
 }
 
 const exito = (data) => {
-    console.log(data);
+	console.log(data);
 }
 
-$('.card-body-closed').click(function() {
-    $(this).closest('#card-learn').remove();
+$('.card-body-closed').click(function () {
+	$(this).closest('#card-learn').remove();
 })
 
 ajax("GET", setDataArr)
 
 $('#save-post').on('click', setObjPost)
 
-$('#create-post').on('click', function (){
-    let form = $("#upgrade-medium").serializeArray(),
-        userObj = {},
-        data = {};
+$('#create-post').on('click', function () {
+	let form    = $("#upgrade-medium").serializeArray(),
+		userObj = {};
 
-    $.each(form, function(idx, value) {
-        userObj[value.name] = value.value;
-    })
-    console.log (userObj)
-    var settings = {
-        "url": "localhost:8081/entries",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-          "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMWEyNmU2ODkzZmI0MjMwYzY1MTZmZCIsImlhdCI6MTU5NTU1MDcxNCwiZXhwIjoxNTk1NzIzNTE0fQ.srmshsUzGBSgNbQDxxNRMtEIxdyWcJXeV2HmAmXZ-So",
-          "Content-Type": "application/json"
-        },
-        "data": JSON.stringify(userObj),
-      };
-      
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-      });
+	$.each(form, function (idx, value) {
+		userObj[value.name] = value.value;
+	})
+
+	var settings = {
+		"url": 'http://localhost:8081/entries',
+		"method": "POST",
+		"timeout": 0,
+		"headers": {
+			"Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMWEyNmU2ODkzZmI0MjMwYzY1MTZmZCIsImlhdCI6MTU5NTU1MDcxNCwiZXhwIjoxNTk1NzIzNTE0fQ.srmshsUzGBSgNbQDxxNRMtEIxdyWcJXeV2HmAmXZ-So",
+			"Content-Type": "application/json"
+		},
+		"data": JSON.stringify(userObj),
+	};
+
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
 })
 
